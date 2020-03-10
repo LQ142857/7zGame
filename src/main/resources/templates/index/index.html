@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>7zGame</title>
+    <meta name="description" content="">
+
+
+    <!-- core CSS -->
+
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/prettyphoto.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/owl.theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/searchtype.css">
+
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.prettyphoto.js"></script>
+    <script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!--    lightCss-->
+    <style>
+
+
+        p, div, a, h1, h2, h3, h4, h5, h6, h7, span {
+            color: #dae2e9;
+        }
+
+        body {
+            --bg: #1b1f2f;
+            transition: background .8s ease;
+            background: var(--bg);
+            background-image: url("images/test.jpg");
+            background-size: 100% 620px;
+            background-repeat: no-repeat;
+
+
+        }
+
+        .light {
+            --bg: #b0b4b9;
+            /*background-image: url("images/header.jpg");*/
+            /*background-repeat:repeat;*/
+        }
+
+        .switch {
+
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+        }
+
+    </style>
+    <!--轮播图1css-->
+    <style>
+
+
+        .scene {
+            border: 1px solid #CCC;
+            margin: 40px 0;
+            position: relative;
+            width: 380px;
+            height: 230px;
+            margin: 40px auto;
+            perspective: 1000px;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform: translateZ(-288px);
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .carousel__cell {
+            position: absolute;
+            width: 90%;
+            height: 80%;
+            left: 5%;
+            top: 10%;
+            border: 2px solid black;
+            line-height: 116px;
+            font-size: 80px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            transition: transform 1s, opacity 1s;
+        }
+
+        .carousel__cell:nth-child(9n+1) {
+            background: hsla(0, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+2) {
+            background: hsla(40, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+3) {
+            background: hsla(80, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+4) {
+            background: hsla(120, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+5) {
+            background: hsla(160, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+6) {
+            background: hsla(200, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+7) {
+            background: hsla(240, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+8) {
+            background: hsla(280, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(9n+0) {
+            background: hsla(320, 100%, 50%, 0.8);
+        }
+
+        .carousel__cell:nth-child(1) {
+            transform: rotateY(0deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(2) {
+            transform: rotateY(40deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(3) {
+            transform: rotateY(80deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(4) {
+            transform: rotateY(120deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(5) {
+            transform: rotateY(160deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(6) {
+            transform: rotateY(200deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(7) {
+            transform: rotateY(240deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(8) {
+            transform: rotateY(280deg) translateZ(288px);
+        }
+
+        .carousel__cell:nth-child(9) {
+            transform: rotateY(320deg) translateZ(288px);
+        }
+
+
+    </style>
+    <!--    轮播图2-->
+    <style>
+        #box {
+            position: relative;
+
+        }
+
+        .pic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            display: none;
+            box-shadow: 0px 0px 8px #000000;
+
+        }</style>
+
+    <!--    自测使用-->
+    <style>
+        * {
+            font-family: 新宋体;
+            font-weight: bold;
+
+        }
+
+        .t {
+            /*border: 1px solid red;*/
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        a {
+            color: #074e9a;
+        }
+
+        a:hover {
+            color: #2b669a;
+
+        }
+
+        .slidTag {
+            background-image: url("fonts/circle.svg");
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+
+
+        }
+
+        .slidTagChoose {
+            background-image: url("fonts/circleChoose.svg");
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+
+
+        }
+
+        .arrow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto
+
+
+        }
+
+
+    </style>
+
+    <!--分类导航-->
+    <style>
+
+        #nav {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 30px 0px;
+        }
+
+        #nav #ul {
+            text-align: center;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 25%, rgba(0, 0, 0, 0.91) 75%, rgba(255, 255, 255, 0) 100%);
+            box-shadow: 0 0 10px rgba(39, 0, 255, 0.59), inset 0 0 1px rgba(255, 49, 0, 0);
+        }
+
+        #nav #ul .liDemo {
+            display: inline-block;
+        }
+
+        #nav #ul .liDemo a {
+            padding: 18px;
+            font-family: "Open Sans";
+            text-transform: uppercase;
+            color: rgb(240, 252, 255);
+            font-size: 17px;
+            text-decoration: none;
+            display: block;
+        }
+
+        #nav #ul .liDemo a:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 131, 0, 0.73);
+        }
+
+
+    </style>
+
+</head>
+<body class="homepage">
+<header id="header">
+    <div style="display: block">
+        <nav class="navbar navbar-inverse" role="banner"
+             style="position:fixed;top:0px;left:0px;width: calc(100%);z-index: 999">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="index.html"><i id="logo" class="fa fa-sun-o"></i> 7zGame</a></div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+
+                        <li><input class="search__input" type="text" placeholder="Search Games"></li>
+
+                        <li class="active"><a href="index.html">推荐</a></li>
+                        <li><a href="services.html">游戏厂商</a></li>
+                        <li><a href="#">官方公告</a></li>
+                        <li><a href="pricing.html">玩家论坛</a></li>
+                        <li><a href="contact.html">购物车</a></li>
+                        <li><img src="images/user.jpg" height="30" width="30"
+                                 style="border-radius:20px"/><a href="">个人中心</a>
+
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span>Light</span>
+                            </label>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div style="height:80px "></div>
+
+
+    </div>
+</header>
+<!--旋转轮播-->
+<div class="scene" style="margin-bottom: 5px">
+    <div class="carousel">
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+        <div class="carousel__cell"><img src="images/header.jpg" width="100% " height="100%"/></div>
+
+    </div>
+</div>
+<div style="text-align: center; margin: 1px 0px 0px;padding: 0">
+    <h3 style="margin-top: 1px ;padding:0 ">🔺</h3>
+    <h3 style="font-weight: bold;margin: 0">游戏名字</h3>
+    <p>游戏介绍babababababababababababababab</p>
+</div>
+
+
+<!--旋转轮播图按钮-->
+<div class="carousel-options" hidden>
+    <p>
+        <label>
+            Cells
+            <input class="cells-range" type="range" min="3" max="15" value="15"/>
+        </label>
+    </p>
+    <p>
+        <button class="previous-button">Previous</button>
+        <button class="next-button">Next</button>
+    </p>
+    <p>
+        Orientation:
+        <label>
+            <input type="radio" name="orientation" value="horizontal" checked/>
+            horizontal
+        </label>
+        <label>
+            <input type="radio" name="orientation" value="vertical"/>
+            vertical
+        </label>
+    </p>
+</div>
+
+<!--主要部分-->
+<main>
+
+
+    <div class="container">
+
+        <div class="row" style="margin: 0">
+            <!--            <div class="col-lg-12">-->
+            <!--                <img style="margin: 0px 0px 5px ;width: 200px;height: 55px" src="images/tag.jpg" alt="">-->
+
+            <!--            </div>-->
+            <!--1分类标签-->
+            <div class="col-lg-12">
+
+                <nav id="nav">
+                    <ul id="ul">
+                        <li class="liDemo">
+                            <a href="#">射击</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">多人在线</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">动作</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">冒险</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">射击</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">独立</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">竞速</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">策略</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">角色扮演</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">VR</a>
+                        </li>
+                        <li class="liDemo">
+                            <a href="#">其他</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+            <!--2推荐-->
+            <div class="col-lg-2   inner t"
+                 style="margin: 0;background:linear-gradient(#41158d, rgba(135,141,139,0));height: 350px">
+                <div style="margin:0; padding-top: 5px;width:100%;height: 30%">
+                    <div style="width:100%;height: 20%">画质: <span>⭐⭐⭐⭐⭐⭐</span></div>
+                    <div style="width:100%;height: 20%">剧情: <span>⭐⭐</span></div>
+                    <div style="width:100%;height: 20%">手感: <span>⭐</span></div>
+                    <div style="width:100%;height: 20%">音乐: <span>⭐⭐⭐⭐</span></div>
+                    <hr style="height: 8%">
+                </div>
+                <div style="margin:0; padding-top: 5px;width:100%;height: 60%">
+                    <div style="text-align: center;font-size: 25px;font-style: italic">9.8</div>
+                    <div style="font-size: 16px">游戏简介：</div>
+                    <div style="width: 100%;word-wrap:break-word">
+                        <span style="font-size: 16px;width: 100%">
+                               &nbsp;&nbsp;babababababababababababababababababababababababababababababa
+
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10   t" style="height: 360px">
+                <div class="row" style="margin: 0">
+                    <div class="col-lg-8 ">
+                        <div id="box">
+                            <div class="pic"><img src="images/banner1.jpg" width="100%" height="350px"/></div>
+                            <div class="pic"><img src="images/banner2.jpg" width="100%" height="350px"/></div>
+                            <div class="pic"><img src="images/banner1.jpg" width="100%" height="350px"/></div>
+                            <div class="pic"><img src="images/banner3.jpg" width="100%" height="350px"/></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="margin: 0;padding: 0">
+                        <!--                        <img src="images/about.jpg" alt="" style="margin: 0;padding: 0;width: 100%;height: 350px">-->
+                        <div style="margin: 0;padding: 0;width: 100%;height: 350px;background-color: #222222">
+                            <p style="margin: 0;padding: 9px 10px 0px;width: 100%;height: 12%;font-size: 20px">游戏名字</p>
+                            <div style="margin: 0;width: 100%;height: 60%">
+
+                                <div style="padding:6px 0px 0px 6px;width: 50%;height:50%;float: left">
+                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
+                                </div>
+                                <div style="padding:6px 6px 0px ;width: 50%;height:50%;float: right">
+                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
+                                </div>
+
+                                <div style="padding:6px 0px 6px 6px ;width: 50%;height:50%;float: left">
+                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
+                                </div>
+                                <div style="padding:6px;width: 50%;height:50%;float: right">
+                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
+                                </div>
+
+                            </div>
+                            <p style="margin: 0;padding: 7px 10px 1px;width: 100%;height: 20%;font-size: 18px">厂商名</p>
+                            <p style="margin: -5px 0px 0px;padding: 7px 10px 0px;width: 100%;height: 8%;font-size: 15px">
+                                <span style="background-color: #008000">7.9<span>折</span></span>
+                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
+                                79<span>￥</span>
+                                <a href="#"> <img src="fonts/download.svg"
+                                                  style="float:right;width: 20px;height: 20px;"></a>
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" style="height: 30px;text-align: center">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circleChoose.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+            </div>
+            <!--3折扣优惠-->
+            <div class="col-lg-1" style="margin:10px 0px 0px;"></div>
+            <div class="col-lg-11" style="margin:60px 0px 0px;font-size: 17px">折扣优惠</div>
+
+
+            <div class="col-lg-1" style="margin:0;height: 360px;">
+                <div style="height: 100%"><img class="arrow" src="images/arrow.png" width="60px" height="110px" alt=""
+                                               style="transform: rotateY(180deg);right: 0"></div>
+            </div>
+            <div class="col-lg-10" style="margin:0;height: 360px;">
+                <div class="col-lg-4" style="padding:5px;margin:0;height: 360px">
+                    <div style="border: 2px solid black;height: 100%;box-shadow: 0px 0px 3px black"></div>
+                </div>
+                <div class="col-lg-4" style="padding:5px;margin:0;height: 360px">
+                    <div style="border: 2px solid black;height: 100%;box-shadow: 0px 0px 3px black"></div>
+                </div>
+                <div class="col-lg-4" style="padding:5px;margin:0;height: 360px">
+                    <div style="border: 2px solid black;height: 100%;box-shadow: 0px 0px 3px black"></div>
+                </div>
+            </div>
+            <div class="col-lg-1" style="margin:0;height: 360px;">
+                <div style="height: 100%"><img class="arrow" src="images/arrow.png" width="60px" height="110px" alt=""
+                                               style="left:0"></div>
+
+            </div>
+            <!--折扣优惠底标-->
+            <div class="col-lg-12" style="height: 30px;text-align: center">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circleChoose.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+                <img src="fonts/circle.svg" alt="">
+            </div>
+
+        </div>
+    </div>
+    <!--4玩家推荐-->
+    <div style="margin-top: 40px;background:linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(35,53,93,0.7) 30%, rgba(35,53,93,0.7) 70%, rgba(255, 255, 255, 0) 100%);height: 520px;width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10" style="margin:60px 0px 0px;padding:10px; font-size: 17px">玩家推荐
+                    <div class="col-lg-12" style="background-color: black;height: 350px">
+                        <div class="col-lg-8 "
+                             style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 8px black"></div>
+                        <div class="col-lg-4"
+                             style="padding:13px;height:100%;background:linear-gradient(rgba(102,78,210,0.66),rgba(77,50,208,0.38));word-wrap:break-word ">
+
+                            <div style="height: 79%">
+                                <span>"</span>
+                                <span>个人感觉Halo1还是有点乏善可陈 除去让人迷茫的引导，略微有点重复的敌人，和有点拖沓的剧情，强烈的3D眩晕感也让人有点吃不消 作为一个只玩过Halo1的新人，我感觉Reach给我的体验要好于Halo1，无论是在UI还是在剧情紧凑性上 不过，总体来说瑕不掩瑜</span>
+                                <span>"</span>
+                            </div>
+
+                            <div style="padding:0;height: 14%;background-color:rgba(31,31,33,0.47) ">
+                                <div style="width: 16%;height: 100%;float:left">
+                                    <img src="images/user.jpg" alt="" style="width:100%;height: 100% ">
+                                </div>
+                                <div style="width: 84%;height: 100%;float:right;font-size: 13px">
+
+
+                                    <div><span>名字</span></div>
+                                    <div><span>👍:</span>1123</div>
+
+
+                                </div>
+
+                                <div style="padding-top:12px;height: 7%;text-align: center">
+                                    <img src="fonts/arrow2.svg" alt=""
+                                         style="float:left;transform: rotateY(180deg);width: 30px;height: 30px"/>
+                                    <span>22篇评论</span>
+                                    <img src="fonts/arrow2.svg" alt=""
+                                         style="float:right;width: 30px;height: 30px"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--5合集专区-->
+    <div style="margin: 0;height: 550px;width: 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-11" style="margin:60px 0px 0px;padding-left:10px; font-size: 17px">合集专区
+                </div>
+                <div class="col-lg-12" style="margin:0;padding:0;width: 100%">
+                    <hr style="margin:0px 0px 20px;padding:0;width: 100%;border: 2px solid rgba(130,5,255,0.73)"/>
+                </div>
+                <div class="col-lg-12" style="height: 400px;text-align: center">
+                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
+                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
+                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
+                    </div>
+                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
+                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
+                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
+                    </div>
+                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
+                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
+                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
+                    </div>
+                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
+                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
+                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
+                    </div>
+                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
+                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
+                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-12" style="margin:0;padding:0;width: 100%">
+                    <hr style="margin:0px 0px 20px;padding:0;width: 100%;border: 2px solid rgba(130,5,255,0.73)"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--6游戏列表-->
+
+    <div style="margin-top:60px;width: 100%;height: 800px;background:linear-gradient(rgba(35,53,93,0.51) 0%, rgba(35,53,93,0) 60%)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10" style="margin:3px 0px 0px;padding:10px; font-size: 17px">
+                    <div class="col-lg-12" style="margin-top: -36px;padding-bottom: 0;font-size: 15px">
+                        <button style="background-color: rgba(255,0,0,0);padding-bottom: 0;border: none">热销商品</button>
+                        <button style="background-color: rgba(35,53,93,0.51);padding-bottom: 0;border: none;border-radius: 6px 6px 0px 0px ">
+                            新品
+                        </button>
+                        <button style="background-color: rgba(255,0,0,0);padding-bottom: 0;border: none">优惠</button>
+                    </div>
+                    <div class="col-lg-12" style="height: 800px">
+                        <div class="col-lg-8 ">
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
+                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
+                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
+                                    <div style="float: top;height: 70%">give me your heart</div>
+                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
+                                </div>
+                                <div style="float:right;width: 190px;height:100%;">
+                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
+                                        8.9<span>折</span>
+                                    </div>
+                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
+                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
+                                        </div>
+                                        <div>89￥</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4"
+                             style="padding:13px;height:100%;background:linear-gradient(rgba(102,78,210,0.66),rgba(77,50,208,0.38));word-wrap:break-word ">
+                            <div style="font-size: 20px">游戏名字</div>
+                            <div style="margin-top: 10px;padding: 4px;background-color: rgba(97,99,98,0.41);height: 50px;font-size: 13px">
+                                <div>评分:8.5</div>
+                                <div>全体好评数:223</div>
+                            </div>
+
+                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
+                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
+                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
+                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
+
+
+                        </div>
+                    </div>
+                    <!--本周畅销榜-->
+                    <div class="col-lg-12" style="margin-top: 100px;">
+                        本周畅销榜
+                    </div>
+                    <div class="col-lg-12" style="padding-right: 30px;height: 420px">
+                        <div class="col-lg-5"
+                             style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 5px black"></div>
+                        <div class="col-lg-7" style="height: 100%;">
+                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
+                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
+                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
+                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
+                            </div>
+                            <div class="col-lg-12" style="padding-left: 20px;height: 4%;"></div>
+                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
+                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
+                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
+                            </div>
+                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
+                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!--页脚-->
+<footer class="footer" style="margin-top: 620px;height: 340px;background-color: black">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="text-align: center;">
+                <div style="color: red">本网站为个人学习开发使用，一切游戏商品皆为虚拟商品</div>
+                <div style="color: red">网站中的部分css样式由<a href="http://www.jq22.com/daima">Jquery插件库网站</a>提供并二次编辑制成</div>
+                <div style="color: red">为了测试购买功能，付款过程中可能会产生真实的现金交易，请谨慎购买</div>
+
+            </div>
+
+            <div class="col-lg-12" style="margin-top: 20px">
+
+                <div class="col-lg-4" style="height: 250px">
+                    <div><img src="images/logo.png" alt=""
+                              style="float:left;margin-top: 70px;width: 200px ; height: 70px"></div>
+
+                    <div style="float:left;float:left;width: 2px;height: 220px; background: #9f6530;"></div>
+                    <div style="margin-top: 25px;margin-left: 40px;float:left;float:left;height: 220px;text-align: center">
+                        <div>微信</div>
+                        <img src="images/whchart.jpg" alt="" style="width: 120px;height: 120px">
+                    </div>
+                     
+                </div>
+
+                <div class="col-lg-8" style="height: 250px">
+                    <div class="col-lg-4" style="height: 250px">
+                        <div style="font-size: 17px">个人链接</div>
+                        <div style=" ">
+                            <div style="padding-top:20px ;color: darkgrey">GitHub</div>
+                            <div style="padding-top:20px ;color: darkgrey">LeetCode</div>
+                            <div style="padding-top:20px ;color: darkgrey">CSDN</div>
+                            <div style="padding-top:20px ;color: darkgrey">NowCoder</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="height: 250px">
+                        <div style="font-size: 17px">其他联系方式</div>
+                        <div style=" ">
+                            <div style="padding-top:10px ">PHONE</div>
+                            <div style="padding-top:10px ;color: darkgrey">17551403371</div>
+                            <div style="padding-top:10px ">E-MAIL</div>
+                            <div style="padding-top:10px ;color: darkgrey">17364453059@163.com</div>
+                            <div style="padding-top:10px ">QQ</div>
+                            <div style="padding-top:10px ;color: darkgrey">3504566107</div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-4" style="height: 250px">
+                        <div style="font-size: 17px">友情链接</div>
+                        <div style=" ">
+                            <div style="padding-top:10px ">
+                                <a href="http://www.jq22.com/daima" style="color: darkgrey">JQuery插件库</a>
+                            </div>
+                            <div style="padding-top:10px ">
+                                <a href="https://icomoon.io/" style="color: darkgrey">IcoMoon</a>
+                            </div>
+                            <div style="padding-top:10px ">
+                                <a href="https://codepen.io/" style="color: darkgrey">CodePen</a>
+                            </div>
+                            <div style="padding-top:10px ">
+                                <a href="https://www.highcharts.com.cn/" style="color: darkgrey">HighCharts</a>
+                            </div>
+                            <div style="padding-top:10px ">
+                                <a href="http://www.codeceo.com/" style="color: darkgrey">CodeCeo</a>
+                            </div>
+                            <div style="padding-top:10px ">
+                                <a href="https://www.juhe.cn/" style="color: darkgrey">聚合数据</a>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</footer>
+
+</body>
+
+<script>
+    $('.switch input').on('change', function (e) {
+        $('.dropdown, body').toggleClass('light', $(this).is(':checked'));
+    });
+</script>
+<!--轮播js-->
+<script>
+
+
+    $(document).ready(function () {
+        setInterval(function () {
+            selectedIndex++;
+            rotateCarousel();
+        }, 4000)
+    });
+    var carousel = document.querySelector('.carousel');
+    var cells = carousel.querySelectorAll('.carousel__cell');
+    var cellCount; // cellCount set from cells-range input value
+    var selectedIndex = 0;
+    var cellWidth = carousel.offsetWidth;
+    var cellHeight = carousel.offsetHeight;
+    var isHorizontal = true;
+    var rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
+    var radius, theta;
+
+    // console.log( cellWidth, cellHeight );
+
+    function rotateCarousel() {
+        var angle = theta * selectedIndex * -1;
+        carousel.style.transform = 'translateZ(' + -radius + 'px) ' +
+            rotateFn + '(' + angle + 'deg)';
+    }
+
+    var prevButton = document.querySelector('.previous-button');
+    prevButton.addEventListener('click', function () {
+        selectedIndex--;
+        rotateCarousel();
+    });
+
+    var nextButton = document.querySelector('.next-button');
+    nextButton.addEventListener('click', function () {
+        selectedIndex++;
+        rotateCarousel();
+    });
+
+    var cellsRange = document.querySelector('.cells-range');
+    cellsRange.addEventListener('change', changeCarousel);
+    cellsRange.addEventListener('input', changeCarousel);
+
+
+    function changeCarousel() {
+        cellCount = cellsRange.value;
+        theta = 360 / cellCount;
+        var cellSize = isHorizontal ? cellWidth : cellHeight;
+        radius = 1.3 * Math.round((cellSize / 2) / Math.tan(Math.PI / cellCount));
+        for (var i = 0; i < cells.length; i++) {
+            var cell = cells[i];
+            if (i < cellCount) {
+                // visible cell
+                cell.style.opacity = 1;
+                var cellAngle = theta * i;
+                cell.style.transform = rotateFn + '(' + cellAngle + 'deg) translateZ(' + radius + 'px)';
+            } else {
+                // hidden cell
+                cell.style.opacity = 0;
+                cell.style.transform = 'none';
+            }
+        }
+
+        rotateCarousel();
+    }
+
+    var orientationRadios = document.querySelectorAll('input[name="orientation"]');
+    (function () {
+        for (var i = 0; i < orientationRadios.length; i++) {
+            var radio = orientationRadios[i];
+            radio.addEventListener('change', onOrientationChange);
+        }
+    })();
+
+    function onOrientationChange() {
+        var checkedRadio = document.querySelector('input[name="orientation"]:checked');
+        isHorizontal = checkedRadio.value == 'horizontal';
+        rotateFn = isHorizontal ? 'rotateY' : 'rotateX';
+        changeCarousel();
+    }
+
+    // set initials
+    onOrientationChange();
+
+
+</script>
+<!--轮播2-->
+<script>
+    $(window).ready(function () {
+        $("#box .pic").eq(0).show();
+        var i = 0;
+
+        function fad() {
+            var m = i % 4;
+            var n = (i + 1) % 4;
+            $("#box .pic").eq(m).fadeOut(800);
+            $("#box .pic").eq(n).fadeIn(800);
+            i++;
+
+        };
+        int = setInterval(fad, 5000);
+    });
+</script>
+<!--滚动的logo-->
+<script>
+    $(window).scroll(function () {
+        var theta = $(window).scrollTop() / 600 % Math.PI;
+        $('#logo').css({
+            transform: 'rotate(' + theta + 'rad)'
+        });
+    });
+</script>
+
+</html>
