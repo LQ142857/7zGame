@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @AutoConfigureAfter(DataSourceConfiguration.class)
-@MapperScan(basePackages = "cn.anpe.anpedemo.mapper", sqlSessionFactoryRef = "masterSqlSessionFactory", basePackageClasses = MapperScannerConfigurer.class)
+@MapperScan(basePackages = "com.a7z.sevenzgame.domain", sqlSessionFactoryRef = "masterSqlSessionFactory", basePackageClasses = MapperScannerConfigurer.class)
 public class MasterDataSourceConfiguration {
     @Bean(name = "masterSqlSessionFactory")
     @Primary
