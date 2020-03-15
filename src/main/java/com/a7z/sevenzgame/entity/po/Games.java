@@ -13,6 +13,18 @@ public class Games {
     private String pubdate;
     private String cover;
     private String grade;
+    private String state;
+    private String describes;
+    private String videourl;
+
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public int getGid() {
         return gid;
@@ -78,6 +90,22 @@ public class Games {
         this.grade = grade;
     }
 
+    public String getDescribe() {
+        return describes;
+    }
+
+    public void setDescribes(String describe) {
+        this.describes = describe;
+    }
+
+    public String getVideourl() {
+        return videourl;
+    }
+
+    public void setVideourl(String videourl) {
+        this.videourl = videourl;
+    }
+
     @Override
     public String toString() {
         return "Games{" +
@@ -89,6 +117,9 @@ public class Games {
                 ", pubdate='" + pubdate + '\'' +
                 ", cover='" + cover + '\'' +
                 ", grade='" + grade + '\'' +
+                ", state='" + state + '\'' +
+                ", describe='" + describes + '\'' +
+                ", videourl='" + videourl + '\'' +
                 '}';
     }
 }

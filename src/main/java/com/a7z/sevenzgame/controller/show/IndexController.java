@@ -1,4 +1,4 @@
-package com.a7z.sevenzgame.controller;
+package com.a7z.sevenzgame.controller.show;
 
 
 import com.a7z.sevenzgame.entity.vo.GameCommit;
@@ -20,12 +20,7 @@ public class IndexController {
         return "/show/index";
     }
 
-    @RequestMapping("/admin")
-    public String admin() {
-        System.out.println("-----------------------------");
-        System.out.println();
-        return "/Admin/submitGame";
-    }
+
 
 
     @RequestMapping("/submitGame")

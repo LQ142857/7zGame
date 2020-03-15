@@ -1,8 +1,8 @@
 package com.a7z.sevenzgame.entity.vo;
 
-import java.util.List;
-
 /**
+ * 提交的游戏信息(除图片)
+ *
  * @author lq
  * @create 2020/3/12-22:30
  */
@@ -13,7 +13,7 @@ public class GameCommit {
     private float discount;
     private String tag;
     private String describe;
-    private List<String> imgList;
+    private String cover;
     private String videourl;
     private int net;
     private String system;
@@ -22,6 +22,14 @@ public class GameCommit {
     private String ram;
     private String rom;
     private String directx;
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
     public String getName() {
         return name;
@@ -71,13 +79,6 @@ public class GameCommit {
         this.describe = describe;
     }
 
-    public List<String> getImgList() {
-        return imgList;
-    }
-
-    public void setImgList(List<String> imgList) {
-        this.imgList = imgList;
-    }
 
     public String getVideourl() {
         return videourl;
@@ -152,7 +153,7 @@ public class GameCommit {
                 ", discount=" + discount +
                 ", tag='" + tag + '\'' +
                 ", describe='" + describe + '\'' +
-                ", imgList=" + imgList +
+                ", cover='" + cover + '\'' +
                 ", videourl='" + videourl + '\'' +
                 ", net=" + net +
                 ", system='" + system + '\'' +
