@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +45,7 @@
             --bg: #1b1f2f;
             transition: background .8s ease;
             background: var(--bg);
-            background-image: url("/images/test.jpg");
+            background-image: url("/images/test3.jpg");
             background-size: 100% 620px;
             background-repeat: no-repeat;
 
@@ -287,44 +287,10 @@
 
 </head>
 <body class="homepage">
-<header id="header">
-    <div style="display: block">
-        <nav class="navbar navbar-inverse" role="banner"
-             style="position:fixed;top:0px;left:0px;width: calc(100%);z-index: 999">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                            class="icon-bar"></span> <span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="index.html"><i id="logo" class="fa fa-sun-o"></i> 7zGame</a></div>
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
+<!--头部信息-->
+<header  th:replace="show/common::header"></header>
+<!--头部信息end-->
 
-                        <li><input class="search__input" type="text" placeholder="Search Games"></li>
-
-                        <li class="active"><a href="index.html">推荐</a></li>
-                        <li><a href="services.html">游戏厂商</a></li>
-                        <li><a href="#">官方公告</a></li>
-                        <li><a href="pricing.html">玩家论坛</a></li>
-                        <li><a href="contact.html">购物车</a></li>
-                        <li><img src="/images/user.jpg" height="30" width="30"
-                                 style="border-radius:20px"/><a href="">个人中心</a>
-
-                            <!--                            <label class="switch">-->
-                            <!--                                <input type="checkbox">-->
-                            <!--                                <span>Light</span>-->
-                            <!--                            </label>-->
-
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div style="height:80px "></div>
-
-
-    </div>
-</header>
 <!--旋转轮播-->
 <div class="scene" style="margin-bottom: 5px">
     <div class="carousel">
@@ -900,96 +866,9 @@
 
 </main>
 
-<!--页脚-->
-<footer class="footer" style="margin-top: 620px;height: 340px;background-color: black">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12" style="text-align: center;">
-                <div style="color: red">本网站为个人学习开发使用，一切游戏商品皆为虚拟商品</div>
-                <div style="color: red">网站中的部分css样式由<a href="http://www.jq22.com/daima">Jquery插件库网站</a>提供并二次编辑制成</div>
-                <div style="color: red">为了测试购买功能，付款过程中可能会产生真实的现金交易，请谨慎购买</div>
-
-            </div>
-
-            <div class="col-lg-12" style="margin-top: 20px">
-
-                <div class="col-lg-4" style="height: 250px">
-                    <div><img src="/images/logo.png" alt=""
-                              style="float:left;margin-top: 70px;width: 200px ; height: 70px"></div>
-
-                    <div style="float:left;float:left;width: 2px;height: 220px; background: #9f6530;"></div>
-                    <div style="margin-top: 25px;margin-left: 40px;float:left;float:left;height: 220px;text-align: center">
-                        <div>微信</div>
-                        <img src="/images/whchart.jpg" alt="" style="width: 120px;height: 120px">
-                    </div>
-                     
-                </div>
-
-                <div class="col-lg-8" style="height: 250px">
-                    <div class="col-lg-4" style="height: 250px">
-                        <div style="font-size: 17px">个人链接</div>
-                        <div style=" ">
-                            <div style="padding-top:20px ;color: darkgrey">GitHub</div>
-                            <div style="padding-top:20px ;color: darkgrey">LeetCode</div>
-                            <div style="padding-top:20px ;color: darkgrey">CSDN</div>
-                            <div style="padding-top:20px ;color: darkgrey">NowCoder</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4" style="height: 250px">
-                        <div style="font-size: 17px">其他联系方式</div>
-                        <div style=" ">
-                            <div style="padding-top:10px ">PHONE</div>
-                            <div style="padding-top:10px ;color: darkgrey">17551403371</div>
-                            <div style="padding-top:10px ">E-MAIL</div>
-                            <div style="padding-top:10px ;color: darkgrey">17364453059@163.com</div>
-                            <div style="padding-top:10px ">QQ</div>
-                            <div style="padding-top:10px ;color: darkgrey">3504566107</div>
-
-                        </div>
-
-
-                    </div>
-                    <div class="col-lg-4" style="height: 250px">
-                        <div style="font-size: 17px">友情链接</div>
-                        <div style=" ">
-                            <div style="padding-top:10px ">
-                                <a href="http://www.jq22.com/daima" style="color: darkgrey">JQuery插件库</a>
-                            </div>
-                            <div style="padding-top:10px ">
-                                <a href="https://icomoon.io/" style="color: darkgrey">IcoMoon</a>
-                            </div>
-                            <div style="padding-top:10px ">
-                                <a href="https://codepen.io/" style="color: darkgrey">CodePen</a>
-                            </div>
-                            <div style="padding-top:10px ">
-                                <a href="https://www.highcharts.com.cn/" style="color: darkgrey">HighCharts</a>
-                            </div>
-                            <div style="padding-top:10px ">
-                                <a href="http://www.codeceo.com/" style="color: darkgrey">CodeCeo</a>
-                            </div>
-                            <div style="padding-top:10px ">
-                                <a href="https://www.juhe.cn/" style="color: darkgrey">聚合数据</a>
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-</footer>
+<!--头部信息-->
+<header  th:replace="show/common::footer"></header>
+<!--头部信息end-->
 
 </body>
 
