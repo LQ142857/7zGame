@@ -131,7 +131,6 @@
         }
 
 
-
         .no-touchevents .btn.btn--main-cta:hover {
             -webkit-transform: scale(1.03);
             transform: scale(1.03);
@@ -270,7 +269,7 @@
 <h1 style="font-size:20px;text-align: center;margin-top: 10%">7zGame---管理模板登录测试</h1>
 
 
-<h1 th:text="${msg}" style="font-size:15px;text-align: center;color: rgba(169,0,12,0.92)"></h1>
+<h1 id="msg" style="font-size:15px;text-align: center;color: rgba(169,0,12,0.92)"></h1>
 
 <div class="wrap flex-c-c">
 
@@ -312,17 +311,46 @@
 
     $("#js-btn").click(function () {
         if ($(this).hasClass("--usr-rtn")) {
+            $.ajax({
+                url: "/admin",
+                method: "GET",
+                data: ({
+                    id: $("#js-field__email").val(),
+                    password: $("#js-field__pass").val()
+                }),
+                success: function (data) {
+                    if (data.code === 200) {
+                        location.href = "https://www.baidu.com/"
+                    } else {
+                        $("#msg").text(data.msg)
 
-            location.href = "http://localhost:8080/adminLogin?id=" + $("#js-field__email").val()
-                + "&password=" + $("#js-field__pass").val();
+                    }
+
+                }
+
+            });
 
 
         }
         if ($(this).hasClass("--usr-new")) {
+            $.ajax({
+                url: "/admin",
+                method: "POST",
+                data: ({
+                    id: $("#js-field__email").val(),
+                    name: $("#js-field__r-pass").val(),
+                    password: $("#js-field__pass").val()
+                }),
+                success: function (data) {
+                    if (data.code === 200) {
+                        $("#msg").text(data.msg)
+                    } else {
+                        $("#msg").text(data.msg)
+                    }
 
-            location.href = "http://localhost:8080/adminRegistered?id=" + $("#js-field__email").val()
-                + "&password=" + $("#js-field__pass").val()+"&name="+$("#js-field__r-pass").val();
+                }
 
+            });
 
 
         }

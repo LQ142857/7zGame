@@ -32,7 +32,7 @@ public class ShiroConfiguration {
             perms：拥有对某个资源的权限才能访问
 
          */
-        filterMap.put("/admin/*", "authc");//拦截的是url路径
+//        filterMap.put("/admin/*", "authc");//拦截的是url路径
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         shiroFilterFactoryBean.setLoginUrl("/admin");//拦截到未登录跳转的页面的url
 

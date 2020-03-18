@@ -10,24 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @create 2020/3/4-16:39
  */
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/index")
 public class ShowController {
 
 
-    @RequestMapping("/show")
+    @RequestMapping("/game")
     public String index() {
-        System.out.println("-----------------------------");
-        return "/show/index";
+        System.out.println("gid");
+        return "/show/game";
     }
 
 
 
 
-    @RequestMapping("/submitGame")
-    public String submitGame(GameCommit gameCommit) {
-        System.out.println(gameCommit);
-        return "/show/index";
-    }
 
 
 }

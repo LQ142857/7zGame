@@ -218,7 +218,7 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <form action="/commitGame/submit" method="post" class="row">
+                                <form action="/commitGame" method="post" class="row">
                                     <div id="timeId" hidden></div>
                                     <div class="form-group col-md-6">
                                         <label><span style="color: red">*</span>游戏名字</label>
@@ -380,7 +380,7 @@
                 var formData = new FormData();//将文件封装，异步提交文件
                 formData.append("file", file);//键值对
                 $.ajax({
-                    url: '/common/uploadImg',
+                    url: '/common/image',
                     dataType: 'json',
                     type: 'POST',
                     async: true,
@@ -388,9 +388,6 @@
                     processData: false, // 使数据不做处理
                     contentType: false, // 不要设置Content-Type请求头
                     success: function (data) {
-                        console.log(data);
-                        console.log(data.data);
-
                         var src = "/upload/uploadImg/" + data.imageName;
                         console.log(src);
                         $("#imageUl").append(data.text);
