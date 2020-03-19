@@ -16,10 +16,7 @@ ul {
 	padding: 0;
 	margin: 0;
 }
-hr {
-	width: 70px;
-	border-top: 4px solid #f39c12;
-}
+
 .btn-primary {
 	padding: 8px 20px;
 	background: #f39c12;

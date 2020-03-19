@@ -1,5 +1,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <header id="header" th:fragment="header">
+<!--    需要引入如下的css样式-->
+<!--    <link href="/css/main.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="/css/searchtype.css">-->
+<!--    <link href="/css/font-awesome.min.css" rel="stylesheet">-->
     <div style="display: block">
         <nav class="navbar navbar-inverse" role="banner"
              style="position:fixed;top:0px;left:0px;width: calc(100%);z-index: 999">
@@ -8,7 +12,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
                             class="icon-bar"></span> <span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="index.html"><i id="logo" class="fa fa-sun-o"></i> 7zGame</a></div>
+                    <a class="navbar-brand" href="index.html" style=" font-family: 新宋体;"><i id="logo" class="fa fa-sun-o"></i> 7zGame</a></div>
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
 
@@ -34,10 +38,61 @@
         </nav>
         <div style="height:80px "></div>
     </div>
+
+    <!--滚动的logo-->
+    <script>
+        $(window).scroll(function () {
+            var theta = $(window).scrollTop() / 600 % Math.PI;
+            $('#logo').css({
+                transform: 'rotate(' + theta + 'rad)'
+            });
+        });
+    </script>
 </header>
 
+<div th:fragment="sort" class="col-lg-12">
+    <nav id="nav">
+        <ul id="ul">
+            <li class="liDemo">
+                <a href="#">射击</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">多人在线</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">动作</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">冒险</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">射击</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">独立</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">竞速</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">策略</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">角色扮演</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">VR</a>
+            </li>
+            <li class="liDemo">
+                <a href="#">其他</a>
+            </li>
 
-<footer th:fragment="footer" class="footer" style="margin-top: 620px;height: 340px;background-color: black">
+        </ul>
+    </nav>
+
+</div>
+
+<footer th:fragment="footer" class="footer" style="margin-top: 620px;height: 340px;background-color: black;box-shadow:0px 0px 1px 1px black ">
     <div class="container">
         <div class="row">
             <div class="col-lg-12" style="text-align: center;">

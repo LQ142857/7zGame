@@ -1,29 +1,480 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>游戏名字</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>游戏详情</title>
+
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/searchtype.css">
+
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background: #1b2838;
+
+        }
+
+        * {
+            font-size: 13px;
+
+            color: #a7a7a7;
+            font-weight: normal;
+        }
+
+        .fontTitle {
+            color: #e7e7e7;
+        }
+    </style>
+
+    <style>
+
+        #nav {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 50px 0px;
+        }
+
+        #nav #ul {
+            text-align: center;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 25%, rgba(0, 0, 0, 0.91) 75%, rgba(255, 255, 255, 0) 100%);
+            box-shadow: 0 0 10px rgba(39, 0, 255, 0.59), inset 0 0 1px rgba(255, 49, 0, 0);
+        }
+
+        #nav #ul .liDemo {
+            display: inline-block;
+        }
+
+        #nav #ul .liDemo a {
+            padding: 18px;
+            font-family: "Open Sans";
+            text-transform: uppercase;
+            color: rgb(240, 252, 255);
+            font-size: 17px;
+            text-decoration: none;
+            display: block;
+        }
+
+        #nav #ul .liDemo a:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 131, 0, 0.73);
+        }
+
+
+    </style>
 </head>
 <body>
-<!--公共头部部分-->
+<!--头部信息-->
 <header th:replace="show/common::header"></header>
-<!--公共头部部分end-->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12" style="background:red;height: 100px">
+<!--头部信息end-->
+<div style="background: url(/images/gameimage.jpg) no-repeat center top">
+    <div th:replace="show/common::sort"></div>
+    <div class="container" style="width: 60%;">
+        <div class="row">
+            <div class="col-lg-12" style="margin-top: 10px; ">
+                <!--模块一：游戏商品展示-->
+                <div class="col-lg-12">
+                    <div class="col-lg-11 fontTitle" style="font-size: 26px;font-weight: bold">Destory every you want
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="button" class="btn btn-default"
+                                style="background-color: #268cff;color: whitesmoke;border-color: #268cff">社区中心
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-12" style="ba2ckground-color: rgba(0,28,41,0.4);box-shadow: 0px 0px 8px #240065 ">
+                    <div class="col-lg-8">
+                        <div class="col-lg-12" style="height: 350px;background-color: black"></div>
 
+                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
+                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
+                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
+                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
+                        <div style="float: left;height: 60px;margin-top:10px ; width: 19.2%;background-color: black"></div>
+
+
+                    </div>
+                    <div class="col-lg-4" style="height: 350px;">
+                        <div style="width: 95%;float: right;">
+                            <div style="background-color: black;height: 150px;"></div>
+                            <div style="font-size:13px ;color:#c9c9c9 ">走过创世纪，4个全新世纪又将集结于此——
+                                「新机动战记高达W」系列、「机动战士高达SEED」系列、「机动战士高达00」系列、 「机动战士高达
+                                铁血的奥尔芬斯」系列中高达30部作品参战。
+                            </div>
+                            <div style="float: left;margin-top:10px;font-size:13px;width: 30%;color: #7a7a7a">最新测评</div>
+                            <div style="float: left;margin-top:10px;font-size:13px;width: 60%"><a href="">特别好评<span
+                                    style="color: #7a7a7a">(162)</span></span></a></div>
+                            <div style="float: left;margin-top:2px;font-size:13px;width: 30%;color: #7a7a7a">全体总评</div>
+                            <div style="float: left;margin-top:2px;font-size:13px;width: 60%"><a href="">特别好评<span
+                                    style="color: #7a7a7a">(1015)</span></span></a></div>
+                            <div style="float: left;margin-top:10px;font-size:13px;width: 30%;color: #7a7a7a">发行日期</div>
+                            <div style="float: left;margin-top:10px;font-size:13px;width: 60%"><span
+                                    style="color:#bebebe;">2019-2-16</span></div>
+                            <div style="float: left;margin-top:2px;font-size:13px;width: 30%;color: #7a7a7a">开发商</div>
+                            <div style="float: left;margin-top:2px;font-size:13px;width: 60%"><a href="">育碧</span></a>
+                            </div>
+                            <div style="float: left;margin-top:10px;font-size:13px;width: 100%;color: #7a7a7a">该产品分类标签
+                            </div>
+                            <div style="float: left;margin-top:2px;font-size:13px;width: 60%">
+                                <button type="button" class="fontTitle"
+                                        style="width: 40px ;height: 20px;font-size: 7px;background-color: #2e6da4;border: 1px solid #2e6da4;border-radius: 3px"
+                                        value="">分类
+                                </button>
+                                <button type="button" class="fontTitle"
+                                        style="width: 60px ;height: 20px;font-size: 7px;background-color: #2e6da4;border: 1px solid #2e6da4;border-radius: 3px"
+                                        value="">分类分类
+                                </button>
+                                <button type="button" class="fontTitle"
+                                        style="width: 40px ;height: 20px;font-size: 7px;background-color: #2e6da4;border: 1px solid #2e6da4;border-radius: 3px"
+                                        value="">分类
+                                </button>
+
+                            </div>
+                            <div class="col-lg-12" style="margin-top: 5px">
+                                <button style="width: 150px ;height: 40px;font-size: 7px;background-color: #2ba431;border: 1px solid #2ba431;border-radius: 3px">
+                                    <img src="/images/cart_empty.png" alt="" style="width: 20px;height: 20px">
+                                    <span class="fontTitle" style="font-size: 13px">添加购物车</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--模块二：游戏商品介绍-->
+                <div class="col-lg-12" style="margin-top: 50px">
+                    <!--左-->
+                    <div class="col-lg-8" style="">
+                        <!--查看所有产品-->
+                        <div class="fontTitle"
+                             style="width: 97% ;height: 60px;background-color: #000000;border-radius: 5px;line-height: 60px;font-size: 14px;font-weight: bold;padding-left: 35px">
+                            查看发行商上的所有产品
+                        </div>
+                        <!--游戏介绍-->
+                        <div class="fontTitle" style="margin-top: 40px;font-size: 16px">游戏介绍</div>
+                        <div style="margin-top: 2px;background: linear-gradient(90deg,#bf7000,rgba(0,25,255,0));height: 2px;width: 97%"></div>
+                        <div style="width: 97%;font-size: 15px;color:#7A7A7A;">
+                            《ASSASSIN’S CREED® ORIGINS》是一次全新的开始
+
+                            *《Assassin’s Creed》Discovery Tour现已免费更新！*
+
+                            王权和阴谋统治下的古埃及时代正慢慢消失在争权夺位的冷酷之战中。重返刺客兄弟会起源的最初时刻，揭开不为人知的黑暗秘密和被遗忘的神秘事件。
+
+                            等待发现的国度
+                            朝着尼罗河下游航行，在探索这片巨大未知国度的过程中，逐步揭开金字塔的神秘面纱，与危险的古代宗教派别和野兽展开殊死一搏。
+
+                            每场游历都是全新故事
+                            从富有的权贵人士到绝望的被驱逐者，跟着众多色彩鲜明、令人难忘的角色一同参与各项任务，进入扣人心弦的故事情节。
+
+                            畅享动作角色扮演体验
+                            感受全新的战斗方式。掠夺并使用数十款特色和稀有程度各不相同的武器。精研深度发展的机械，并迎战独特强大的头目，发挥你的战术技能。
+                            系统需求
+                        </div>
+                        <!--游戏硬件要求-->
+                        <div class="fontTitle" style="margin-top: 40px;font-size: 16px">硬件要求</div>
+                        <div style="margin-top: 2px;background: linear-gradient(90deg,#bf7000,rgba(0,25,255,0));height: 2px;width: 97%"></div>
+                        <div style="width: 97%;font-size: 15px;color:#7A7A7A;">
+                            <div>
+                                <div style="margin-top: 5px">
+                                    <div style="color: #7a7a7a;float: left">操作系统:&nbsp;</div>
+                                    <div style="color: #bebebe">win10</div>
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <div style="color: #7a7a7a;float: left">处理器:&nbsp;</div>
+                                    <div style="color: #bebebe">i5 eu33</div>
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <div style="color: #7a7a7a;float: left">显卡:&nbsp;</div>
+                                    <div style="color: #bebebe">GTX930</div>
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <div style="color: #7a7a7a;float: left">内存:&nbsp;</div>
+                                    <div style="color: #bebebe">8GB</div>
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <div style="color: #7a7a7a;float: left">DirectX版本:&nbsp;</div>
+                                    <div style="color: #bebebe">11</div>
+                                </div>
+                                <div style="margin-top: 5px">
+                                    <div style="color: #7a7a7a;float: left">最小存储空间:&nbsp;</div>
+                                    <div style="color: #bebebe">32GB</div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <!--相似推荐-->
+                        <div class="fontTitle" style="margin-top: 40px;font-size: 16px">相似推荐</div>
+                        <div style="margin-top: 2px;background: linear-gradient(90deg,#bf7000,rgba(0,25,255,0));height: 2px;width: 97%"></div>
+                        <div class="col-lg-4"
+                             style="margin-top: 40px;padding: 1px">
+                            <div style="padding: 10px;background-color: rgba(8,19,29,0.39)">
+                                <img src="/images/banner2.jpg" alt="" height="80px" width="100%">
+                                <div>游戏名字</div>
+                                <span style="background-color: #008000">7.9<span>折</span></span>
+                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
+                                <span class="fontTitle">￥79</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"
+                             style="margin-top: 40px;padding: 1px">
+                            <div style="padding: 10px;background-color: rgba(8,19,29,0.39)">
+                                <img src="/images/banner2.jpg" alt="" height="80px" width="100%">
+                                <div>游戏名字</div>
+                                <span style="background-color: #008000">7.9<span>折</span></span>
+                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
+                                <span class="fontTitle">￥79</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"
+                             style="margin-top: 40px;padding: 1px">
+                            <div style="padding: 10px;background-color: rgba(8,19,29,0.39)">
+                                <img src="/images/banner2.jpg" alt="" height="80px" width="100%">
+                                <div>游戏名字</div>
+                                <span style="background-color: #008000">7.9<span>折</span></span>
+                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
+                                <span class="fontTitle">￥79</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--右-->
+                    <div class="col-lg-4" style="">
+                        <!--支持的语言-->
+                        <div class="col-lg-12" style=";padding:10px;background-color: #02030557">
+                            <div class="fontTitle">语言</div>
+                            <div style="">
+                                <div style="float: left;width: 40%;color: #a7a7a7">&nbsp;</div>
+                                <div style="float: left;width: 20%;color: #a7a7a7">界面</div>
+                                <div style="float: left;width: 20%;color: #a7a7a7">音频</div>
+                                <div style="float: left;width: 20%;color: #a7a7a7">字幕</div>
+
+                            </div>
+
+                            <div>
+                                <hr style="margin-bottom:3px">
+                                <div style="float: left;width: 40%;color: #a7a7a7">简体中文</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+
+                            </div>
+                            <div>
+                                <hr style="margin-bottom:3px">
+                                <div style="float: left;width: 40%;color: #a7a7a7">英语</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">&nbsp;</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+
+                            </div>
+                            <div>
+                                <hr style="margin-bottom:3px">
+                                <div style="float: left;width: 40%;color: #a7a7a7">法语</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+
+                            </div>
+                            <dvi>
+                                <hr style="margin-bottom:3px">
+                                <div style="float: left;width: 40%;color: #a7a7a7">意大利语</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+
+
+                            </dvi>
+                            <div>
+                                <hr style="margin-bottom:3px">
+                                <div style="float: left;width: 40%;color: #a7a7a7">德语</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
+
+                            </div>
+                        </div>
+                        <!--游戏评分-->
+                        <div class="col-lg-12" style=";margin-top: 10px;padding:10px;background-color: #02030557">
+                            <div class="fontTitle">评分</div>
+
+                            <div>
+
+                                <div style="padding-left: 20%;color: #7A7A7A">画质: <span>⭐⭐⭐⭐⭐</span><span
+                                        style="color: #a7a7a7">(154)</span></div>
+                                <div style="padding-left: 20%;color: #7A7A7A">剧情: <span>⭐⭐⭐⭐</span><span
+                                        style="color: #a7a7a7">(154)</span></div>
+                                <div style="padding-left: 20%;color: #7A7A7A">手感: <span>⭐⭐⭐</span><span
+                                        style="color: #a7a7a7">(154)</span></div>
+                                <div style="padding-left: 20%;color: #7A7A7A">音乐: <span>⭐⭐</span><span
+                                        style="color: #a7a7a7">(154)</span></div>
+
+
+                            </div>
+                            <hr style="margin-bottom:3px;margin-top: 2px">
+                            <div style="text-align: center;font-size: 40px;color: #d27b00;font-weight: bold;font-style: italic;line-height: 40px">
+                                9.8
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="border-color: #454545;margin-bottom: 10px">
+    <!--模块三：消费者评价-->
+    <div class="container" style="width: 60%;">
+        <div class=" row">
+            <div class="col-lg-12" style="margin-top: 10px;height: 300px;">
+                <!--评论导航条-->
+                <div class="col-lg-12 "
+                     style="height: 60px;padding: 10px;background-color: rgba(0,22,37,0.25);box-shadow: 0px 0px 2px 2px #c2860a">
+                    <div class="col-lg-8 ">
+                        <div class="fontTitle" style="font-weight: bold">全体总评<span>(15055)</span></div>
+                        <div style="float: left;color: #606060">好评(151)</div>
+                        <div style="float: left;color: #606060;margin-left: 10px">差评(151)</div>
+
+                    </div>
+                    <div class="col-lg-4 fontTitle" style="font-weight: bold">
+                        <div class="fontTitle" style="font-weight: bold">最近一个月评论<span>(45)</span></div>
+                        <div style="float: left;color: #606060">好评(5)</div>
+                        <div style="float: left;color: #606060;margin-left: 10px">差评(1)</div>
+                    </div>
+                </div>
+                <!--评论分页按钮-->
+                <div>
+                    <button style="width: 80px ;height: 30px;font-size: 7px;background-color: #004ca4;border: 1px solid #004ca4;border-radius: 3px;box-shadow: 0px 0px 1px 1px black;">
+                        <img src="/fonts/smile.svg" alt="" style="width: 15px;height: 15px">
+                        <span class="fontTitle" style="font-size: 13px">好评</span>
+                    </button>
+                    <button style="width: 80px ;height: 30px;font-size: 7px;background-color: #a42b2b;border: 1px solid #a42b2b;border-radius: 3px;box-shadow: 0px 0px 1px 1px black;">
+                        <img src="/fonts/bad.svg" alt="" style="width: 15px;height: 15px">
+                        <span class="fontTitle" style="font-size: 13px">差评</span>
+                    </button>
+                </div>
+
+                <!--按赞排名评论-->
+                <div class="col-lg-8" style="padding-right: 10px">
+                    <div class="fontTitle" style="font-size: 15px;margin-top: 20px">最有价值的评论</div>
+                    <!--一条评论-->
+                    <div class="col-lg-12"
+                         style="margin-bottom: 20px;background-color: #16202d;box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.45)">
+                        <div class="col-lg-4" style="padding:10px 0px 0px 10px">
+                            <div style="float: left;height: 50px">
+                                <img src="/images/user.jpg" alt=""
+                                     style="width: 35px;height: 35px;box-shadow:0px 0px 2px 2px #7d7d7d"></div>
+                            <div>
+                                <div style="font-weight: bold;font-style: italic">用户名字</div>
+                                <div>账户里有xx款游戏</div>
+                                <div>22条测评</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8" style="padding:10px 0px 0px 10px">
+                            <div>发布时间：2020-1-1</div>
+                            <div style="color: #6094c0;font-size: 14px;margin-top: 2px">
+                                评论内容5545454651651541564156465465456456465465
+                                评论内容5545454651651541564156465465456456465465评论内容5545454651651541564156465465456456465465
+                                评论内容5545454651651541564156465465456456465465
+                            </div>
+                            <hr style="margin: 5px 0px 5px 0px;border-color: #7A7A7A">
+                            <div>评价此观点
+                                <button class="assess"
+                                        style="font-size: 7px;background-color: rgba(228,243,242,0.11);border: 1px solid rgba(161,164,163,0);border-radius: 3px;color: #b2bac3">
+                                    <img src="/fonts/agree.svg" alt="" style="height: 16px;width: 16px;">赞同
+                                </button>
+                                <button class="assess"
+                                        style="font-size: 7px;background-color: rgba(228,243,242,0.11);border: 1px solid rgba(161,164,163,0);border-radius: 3px;color: #afbac3">
+                                    <img src="/fonts/agree.svg" alt=""
+                                         style="height: 16px;width: 16px;transform: rotateX(180deg);">反对
+                                </button>
+                                <button class="assess"
+                                        style="font-size: 7px;background-color: rgba(228,243,242,0.11);border: 1px solid rgba(161,164,163,0);border-radius: 3px;color: #afbac3">
+                                    <img src="/fonts/report.svg" alt="" style="height: 16px;width: 16px;">举报
+                                </button>
+                            </div>
+                            <div style="margin-top: 3px">113人赞同此观点</div>
+                            <div>43人反对此观点</div>
+                            <div style="height: 45px;background-color: #00000054;margin: 0 auto;display: flex; align-items:center;">
+                                <img src="/fonts/recall.svg" alt="" height="30px" width="30px">
+                                此观点有0条回复
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--按时间排名评论-->
+                <div class="col-lg-4">
+                    <div class="fontTitle" style="font-size: 15px;margin-top: 20px">最新评论 <span style="color: #7A7A7A">(最近一个月)</span>
+                    </div>
+                    <!--评论-->
+                    <div class="col-lg-12"
+                         style="margin-bottom: 20px;background-color: #16202d;box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.45)">
+                        <div style="background-color: #2b669a;padding: 5px;">玩家名字
+                            <span style="float: right">2016-5-9 18:24</span></div>
+                        <div style="padding: 5px;">
+                            <div style="color: #6094c0;">这里是消费者的评论内容但是发射点发射点发大水发啊手动阀撒打发阿松大但是</div>
+                            <hr style="margin: 5px 0px 5px 0px;border-color: #7A7A7A">
+                            <div>评价此观点
+                                <button class="assess"
+                                        style="font-size: 7px;background-color: rgba(228,243,242,0.11);border: 1px solid rgba(161,164,163,0);border-radius: 3px;color: #b2bac3">
+                                    <img src="/fonts/agree.svg" alt="" style="height: 16px;width: 16px;">赞同
+                                </button>
+                                <button class="assess"
+                                        style="font-size: 7px;background-color: rgba(228,243,242,0.11);border: 1px solid rgba(161,164,163,0);border-radius: 3px;color: #afbac3">
+                                    <img src="/fonts/agree.svg" alt=""
+                                         style="height: 16px;width: 16px;transform: rotateX(180deg);">反对
+                                </button>
+                                <button class="assess"
+                                        style="font-size: 7px;background-color: rgba(228,243,242,0.11);border: 1px solid rgba(161,164,163,0);border-radius: 3px;color: #afbac3">
+                                    <img src="/fonts/report.svg" alt="" style="height: 16px;width: 16px;">举报
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
 
         </div>
 
 
     </div>
-
+</div>
+</div>
 </div>
 
 
+<!--页脚信息-->
+<footer th:replace="show/common::footer"></footer>
+<!--页脚信息-->
 
+</div>
 </body>
+<script>
+    $(".assess").mouseover(function () {
+
+        $(this).css("background-color", "rgba(70,121,170,0.64)");
+    })
+    $(".assess").mouseout(function () {
+
+        $(this).css("background-color", "rgba(228,243,242,0.11)");
+    })
+
+
+</script>
+
+
 </html>

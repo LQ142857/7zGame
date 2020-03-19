@@ -15,9 +15,15 @@ public class ShowController {
 
 
     @RequestMapping("/game")
-    public String index() {
+    public String game() {
         System.out.println("gid");
         return "/show/game";
+    }
+
+    @RequestMapping("")
+    public String index() {
+
+        return "/show/index";
     }
 
 
