@@ -1,7 +1,7 @@
 package com.a7z.sevenzgame.controller.show;
 
 
-import com.a7z.sevenzgame.entity.vo.GameCommit;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
