@@ -1,10 +1,12 @@
 package com.a7z.sevenzgame.service.impl;
 
 import com.a7z.sevenzgame.domain.AdministratorsDao;
-import com.a7z.sevenzgame.entity.po.Administrators;
+import com.a7z.sevenzgame.entity.po.Administrator;
 import com.a7z.sevenzgame.service.AdministratorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author lq
@@ -17,13 +19,13 @@ public class AdministratorsServiceImpl implements AdministratorsService {
     AdministratorsDao administratorsDao;
 
     @Override
-    public void addOne(Administrators administrators) {
-        administratorsDao.addOne(administrators);
+    public void addOne(Administrator administrator) {
+        administratorsDao.addOne(administrator);
 
     }
 
     @Override
-    public Administrators findOne(String username, String password) {
+    public Administrator findOne(String username, String password) {
         return administratorsDao.findOne(username, password);
     }
 
@@ -35,5 +37,10 @@ public class AdministratorsServiceImpl implements AdministratorsService {
     @Override
     public String queryPasswordById(String id) {
         return administratorsDao.queryPasswordById(id);
+    }
+
+    @Override
+    public List<String> queryPermById(String id) {
+        return administratorsDao.queryPermById(id);
     }
 }

@@ -1,7 +1,7 @@
 package com.a7z.sevenzgame.controller;
 
 import com.a7z.sevenzgame.entity.vo.ResultUploadImg;
-import com.a7z.sevenzgame.service.ImageService;
+import com.a7z.sevenzgame.service.ImagesService;
 import com.a7z.sevenzgame.utils.UUID;
 import com.a7z.sevenzgame.utils.UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ import java.io.IOException;
 public class CommonController {
 
     @Autowired
-    ImageService imageService;
+    ImagesService imagesService;
 
     /**
      * 上传图片
@@ -67,7 +67,7 @@ public class CommonController {
                     "                                            </figcaption>\n" +
                     "                                        </figure>\n" +
                     "                                    </li>");
-            imageService.addImage("88888888",srcName);
+            imagesService.addImage(000000,1,srcName);
             return json;
         } catch (IOException e) {
             json.setCode(ResultUploadImg.WRONG);

@@ -1,4 +1,26 @@
 spring:
+  redis:
+    # Redis中的哪一个数据库
+    database: 1
+    # 进行Redis链接超时时间毫秒
+    timeout: 5000
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 连接池配置（使用负值表示没有限制），注意springboot2.x之后使用的是lettuce，之前jedis
+    lettuce:
+      pool:
+        # 连接池最小空闲链接
+        min-idle: 1
+        # 连接池最大空闲链接
+        max-idle: 10
+        # 连接池最大阻塞时间
+        max-wait: 3000
+        # 连接池最大连接数
+        max-Active: 8
   servlet:
     multipart:
       enabled: true
@@ -34,14 +56,24 @@ spring:
       testOnReturn: false
       poolPreparedStatements: true
       maxOpenPreparedStatements: 20
+  mvc:
+    static-path-pattern: /**
+  resources:
+#    static-locations: file:C://1/
+    static-locations: file:/www/game7z/
+# /download 、ZxingUtil、login页面需要更改在线配置
+
+
+
 mapper:
   mappers: tk.mybatis.mapper.common.Mapper
   identity: select sys_guid() from dual
 
 server:
-  port: 8080
+  port: 80
   session-timeout: 30
   ##tomcat.max-threads: 0
   tomcat.uri-encoding: UTF-8
-mvc:
-  static-path-pattern:classpath: /static/**
+
+
+

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>游戏详情</title>
-
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -14,7 +14,6 @@
 
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
     <style>
         body {
             background: #1b2838;
@@ -31,6 +30,87 @@
         .fontTitle {
             color: #e7e7e7;
         }
+
+        strong {
+            color: #e7e7e7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #e7e7e7;
+        }
+
+        h2 {
+            font-size: 14px;
+        }
+
+        .fontTitle {
+            color: #e7e7e7;
+        }
+
+        .game_language_options {
+            border-collapse: collapse;
+        }
+
+        .game_language_options td span {
+            font-weight: bold;
+            color: #67c1f5;
+        }
+
+        table.game_language_options {
+            border-collapse: collapse;
+        }
+
+        .game_language_options tr {
+            border-bottom: 1px solid #626366;
+        }
+
+        .game_language_options td {
+            padding: 3px 0px 3px 0px;
+
+        }
+
+        .checkcol {
+            width: 62px;
+            text-align: center;
+        }
+
+        .game_area_sys_req_leftCol, .game_area_sys_req_rightCol {
+            float: left;
+            width: 300px;
+        }
+
+        .game_area_sys_req ul li {
+            margin: 5px 0px 0px 0px;
+            color: #cacaca;
+        }
+
+        .game_area_sys_req ul li strong {
+            color: #7A7A7A;
+        }
+
+        ul {
+            padding-left: 0px;
+        }
+
+        ul ul {
+            list-style-type: none;
+
+        }
+
+
+        /*侧边滑动条*/
+        ::-webkit-scrollbar {
+            width: 6px;
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #0540a4;
+            border-radius: 3px;
+
+        }
+
+
     </style>
 
     <style>
@@ -74,74 +154,140 @@
 <!--头部信息-->
 <header th:replace="show/common::header"></header>
 <!--头部信息end-->
-<div style="background: url(/images/gameimage.jpg) no-repeat center top">
+<span id="bgValue" th:text="${game.info.bg}" hidden></span>
+<div id="divBg" style="background: url(/images/gameimage.jpg) no-repeat center top">
     <div th:replace="show/common::sort"></div>
     <div class="container" style="width: 60%;">
         <div class="row">
             <div class="col-lg-12" style="margin-top: 10px; ">
                 <!--模块一：游戏商品展示-->
-                <div class="col-lg-12">
-                    <div class="col-lg-11 fontTitle" style="font-size: 26px;font-weight: bold">Destory every you want
-                    </div>
-                    <div class="col-lg-1">
-                        <button type="button" class="btn btn-default"
-                                style="background-color: #268cff;color: whitesmoke;border-color: #268cff">社区中心
-                        </button>
+                <div class="col-lg-12" style="margin-bottom: 10px;">
+                    <div class="col-lg-11 fontTitle" style="font-size: 26px;font-weight: bold"
+                         th:text="${game.info.name}">
                     </div>
                 </div>
                 <div class="col-lg-12" style="ba2ckground-color: rgba(0,28,41,0.4);box-shadow: 0px 0px 8px #240065 ">
                     <div class="col-lg-8">
-                        <div class="col-lg-12" style="height: 350px;background-color: black"></div>
+                        <div class="col-lg-12" style="height: 350px;background-color: black">
+                            <div id="imageDiv" hidden style="width: 100%;height: 100%">
+                                <img class="showImg" id="showImg1" th:src="'/upload/gameImg/'+${game.imgArr.get(0)}"
+                                     alt=""
+                                     width="100%"
+                                     height="100%">
+                                <img class="showImg" id="showImg2" hidden
+                                     th:src="'/upload/gameImg/'+${game.imgArr.get(1)}" alt=""
+                                     width="100%"
+                                     height="100%">
+                                <img class="showImg" id="showImg3" hidden
+                                     th:src="'/upload/gameImg/'+${game.imgArr.get(2)}" alt=""
+                                     width="100%"
+                                     height="100%">
+                                <img class="showImg" id="showImg4" hidden
+                                     th:src="'/upload/gameImg/'+${game.imgArr.get(3)}" alt=""
+                                     width="100%"
+                                     height="100%">
+                            </div>
 
-                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
-                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
-                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
-                        <div style="float: left;height: 60px;margin-top:10px ;margin-right: 1%; width: 19.2%;background-color: black"></div>
-                        <div style="float: left;height: 60px;margin-top:10px ; width: 19.2%;background-color: black"></div>
+                            <div id="videoDiv" style="height:100%;width: 100%;background-color: black">
+                                <img id="poster" th:src="'/upload/gameImg/'+${game.info.cover}" alt=""
+                                     style="position: absolute;width: 100%;height: 100%">
+                                <video id="gameVideo"
+                                       th:src="${game.info.videourl}"
+                                       width="100%" height="100%"></video>
+                            </div>
+                        </div>
+
+                        <div
+                                style="float: left;height: 70px;margin-top:10px ;margin-right: 1%; width: 19.2%;position: relative">
+                            <a href="">
+                                <img id="video-div" th:src="'/upload/gameImg/'+${game.info.videoBg}" alt="" width="100%"
+                                     height="100%" onmouseenter="changeShowVideo()">
+                                <div style="position: absolute;top: 25%;left: 40%">
+                                    <img src="/fonts/play.svg" alt="" width="30px" height="30px">
+                                </div>
+                            </a>
+                        </div>
+                        <div style="float: left;height: 70px;margin-top:10px ;margin-right: 1%; width: 19.2%">
+                            <a href="">
+                                <img class="img-div" th:src="'/upload/gameImg/'+${game.imgArr.get(0)}" alt=""
+                                     width="100%"
+                                     height="100%" onmouseenter="changeShowImg(1)">
+                            </a>
+                        </div>
+                        <div style="float: left;height: 70px;margin-top:10px ;margin-right: 1%; width: 19.2%">
+                            <a href="">
+                                <img class="img-div" th:src="'/upload/gameImg/'+${game.imgArr.get(1)}" alt=""
+                                     width="100%"
+                                     height="100%" onmouseenter="changeShowImg(2)"></a>
+
+                        </div>
+                        <div style="float: left;height: 70px;margin-top:10px ;margin-right: 1%; width: 19.2%">
+                            <a href="">
+                                <img class="img-div" th:src="'/upload/gameImg/'+${game.imgArr.get(2)}" alt=""
+                                     width="100%"
+                                     height="100%" onmouseenter="changeShowImg(3)"></a>
+
+                        </div>
+
+                        <div style="float: left;height: 70px;margin-top:10px ; width: 19.2%;">
+                            <a href="">
+                                <img class="img-div" th:src="'/upload/gameImg/'+${game.imgArr.get(3)}" alt=""
+                                     width="100%"
+                                     height="100%" onmouseenter="changeShowImg(4)"></a>
+
+                        </div>
 
 
                     </div>
-                    <div class="col-lg-4" style="height: 350px;">
+                    <div class="col-lg-4" style="">
                         <div style="width: 95%;float: right;">
-                            <div style="background-color: black;height: 150px;"></div>
-                            <div style="font-size:13px ;color:#c9c9c9 ">走过创世纪，4个全新世纪又将集结于此——
-                                「新机动战记高达W」系列、「机动战士高达SEED」系列、「机动战士高达00」系列、 「机动战士高达
-                                铁血的奥尔芬斯」系列中高达30部作品参战。
+                            <div style="height: 150px;">
+                                <img th:src="'/upload/gameImg/'+${game.info.cover}" alt="" width="100%" height="100%">
+                            </div>
+                            <div style="font-size:13px ;height: 86px;color:#c9c9c9;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4;overflow: hidden"
+                                 th:text="${game.info.describes}">
                             </div>
                             <div style="float: left;margin-top:10px;font-size:13px;width: 30%;color: #7a7a7a">最新测评</div>
                             <div style="float: left;margin-top:10px;font-size:13px;width: 60%"><a href="">特别好评<span
-                                    style="color: #7a7a7a">(162)</span></span></a></div>
+                                    style="color: #7a7a7a">(0)</span></span></a></div>
                             <div style="float: left;margin-top:2px;font-size:13px;width: 30%;color: #7a7a7a">全体总评</div>
                             <div style="float: left;margin-top:2px;font-size:13px;width: 60%"><a href="">特别好评<span
-                                    style="color: #7a7a7a">(1015)</span></span></a></div>
+                                    style="color: #7a7a7a">(0)</span></span></a></div>
                             <div style="float: left;margin-top:10px;font-size:13px;width: 30%;color: #7a7a7a">发行日期</div>
                             <div style="float: left;margin-top:10px;font-size:13px;width: 60%"><span
-                                    style="color:#bebebe;">2019-2-16</span></div>
+                                    style="color:#bebebe;" th:text="${game.time}"></span></div>
                             <div style="float: left;margin-top:2px;font-size:13px;width: 30%;color: #7a7a7a">开发商</div>
-                            <div style="float: left;margin-top:2px;font-size:13px;width: 60%"><a href="">育碧</span></a>
+                            <div style="float: left;margin-top:2px;font-size:13px;width: 60%">
+                                <a th:href="'/companies/'+${game.info.companyName}">
+                                    <span id="companyName" th:text="${game.info.companyName}"></span>
+                                </a>
+                                <span id="cid" hidden th:text="${game.info.company}"></span>
                             </div>
                             <div style="float: left;margin-top:10px;font-size:13px;width: 100%;color: #7a7a7a">该产品分类标签
                             </div>
-                            <div style="float: left;margin-top:2px;font-size:13px;width: 60%">
-                                <button type="button" class="fontTitle"
-                                        style="width: 40px ;height: 20px;font-size: 7px;background-color: #2e6da4;border: 1px solid #2e6da4;border-radius: 3px"
-                                        value="">分类
-                                </button>
-                                <button type="button" class="fontTitle"
-                                        style="width: 60px ;height: 20px;font-size: 7px;background-color: #2e6da4;border: 1px solid #2e6da4;border-radius: 3px"
-                                        value="">分类分类
-                                </button>
-                                <button type="button" class="fontTitle"
-                                        style="width: 40px ;height: 20px;font-size: 7px;background-color: #2e6da4;border: 1px solid #2e6da4;border-radius: 3px"
-                                        value="">分类
-                                </button>
+                            <div style="float: left;margin-top:2px;width: 100%;font-size:13px;overflow:hidden;white-space: nowrap;text-overflow:ellipsis">
+                                <a th:each="stat,index:${game.tags}" th:href="'/classes/'+${stat}">
+                                    <button type="button" class="fontTitle"
+                                            style="width: 40px ;margin-right: 10px;height: 20px;font-size: 7px;background-color: #2e6da4;border: 1px solid #2e6da4;border-radius: 3px"
+                                            value="" th:text="${stat}">
+                                        分类
+                                    </button>
+                                </a>
+
 
                             </div>
                             <div class="col-lg-12" style="margin-top: 5px">
-                                <button style="width: 150px ;height: 40px;font-size: 7px;background-color: #2ba431;border: 1px solid #2ba431;border-radius: 3px">
+                                <button onclick="addCart()"
+                                        style="width: 150px ;height: 40px;font-size: 7px;background-color: #2ba431;border: 1px solid #2ba431;border-radius: 3px">
                                     <img src="/images/cart_empty.png" alt="" style="width: 20px;height: 20px">
-                                    <span class="fontTitle" style="font-size: 13px">添加购物车</span>
+                                    <span th:text="${cart}" class="fontTitle"
+                                          style="font-size: 13px"></span>
                                 </button>
+                                <span th:if="${game.info.discount}!=''"
+                                      style="text-decoration: line-through;color: #a4a4a4"
+                                      th:text="${game.info.cost}"></span>
+                                <span style="background-color: #008000" th:text="${game.info.discount}"></span>
+                                <span style="color: white;font-size: 20px;" th:text="${game.info.price}"></span>
 
                             </div>
 
@@ -163,89 +309,32 @@
                         <div class="fontTitle" style="margin-top: 40px;font-size: 16px">游戏介绍</div>
                         <div style="margin-top: 2px;background: linear-gradient(90deg,#bf7000,rgba(0,25,255,0));height: 2px;width: 97%"></div>
                         <div style="width: 97%;font-size: 15px;color:#7A7A7A;">
-                            《ASSASSIN’S CREED® ORIGINS》是一次全新的开始
-
-                            *《Assassin’s Creed》Discovery Tour现已免费更新！*
-
-                            王权和阴谋统治下的古埃及时代正慢慢消失在争权夺位的冷酷之战中。重返刺客兄弟会起源的最初时刻，揭开不为人知的黑暗秘密和被遗忘的神秘事件。
-
-                            等待发现的国度
-                            朝着尼罗河下游航行，在探索这片巨大未知国度的过程中，逐步揭开金字塔的神秘面纱，与危险的古代宗教派别和野兽展开殊死一搏。
-
-                            每场游历都是全新故事
-                            从富有的权贵人士到绝望的被驱逐者，跟着众多色彩鲜明、令人难忘的角色一同参与各项任务，进入扣人心弦的故事情节。
-
-                            畅享动作角色扮演体验
-                            感受全新的战斗方式。掠夺并使用数十款特色和稀有程度各不相同的武器。精研深度发展的机械，并迎战独特强大的头目，发挥你的战术技能。
-                            系统需求
+                            <div th:utext="${game.info.detail}"></div>
                         </div>
                         <!--游戏硬件要求-->
                         <div class="fontTitle" style="margin-top: 40px;font-size: 16px">硬件要求</div>
                         <div style="margin-top: 2px;background: linear-gradient(90deg,#bf7000,rgba(0,25,255,0));height: 2px;width: 97%"></div>
                         <div style="width: 97%;font-size: 15px;color:#7A7A7A;">
-                            <div>
-                                <div style="margin-top: 5px">
-                                    <div style="color: #7a7a7a;float: left">操作系统:&nbsp;</div>
-                                    <div style="color: #bebebe">win10</div>
-                                </div>
-                                <div style="margin-top: 5px">
-                                    <div style="color: #7a7a7a;float: left">处理器:&nbsp;</div>
-                                    <div style="color: #bebebe">i5 eu33</div>
-                                </div>
-                                <div style="margin-top: 5px">
-                                    <div style="color: #7a7a7a;float: left">显卡:&nbsp;</div>
-                                    <div style="color: #bebebe">GTX930</div>
-                                </div>
-                                <div style="margin-top: 5px">
-                                    <div style="color: #7a7a7a;float: left">内存:&nbsp;</div>
-                                    <div style="color: #bebebe">8GB</div>
-                                </div>
-                                <div style="margin-top: 5px">
-                                    <div style="color: #7a7a7a;float: left">DirectX版本:&nbsp;</div>
-                                    <div style="color: #bebebe">11</div>
-                                </div>
-                                <div style="margin-top: 5px">
-                                    <div style="color: #7a7a7a;float: left">最小存储空间:&nbsp;</div>
-                                    <div style="color: #bebebe">32GB</div>
-                                </div>
-
-
-                            </div>
+                            <div th:utext="${game.info.configuration}"></div>
 
                         </div>
                         <!--相似推荐-->
                         <div class="fontTitle" style="margin-top: 40px;font-size: 16px">相似推荐</div>
                         <div style="margin-top: 2px;background: linear-gradient(90deg,#bf7000,rgba(0,25,255,0));height: 2px;width: 97%"></div>
-                        <div class="col-lg-4"
+                        <div class="col-lg-4" th:each="s,stat:${similar}"
                              style="margin-top: 40px;padding: 1px">
-                            <div style="padding: 10px;background-color: rgba(8,19,29,0.39)">
-                                <img src="/images/banner2.jpg" alt="" height="80px" width="100%">
-                                <div>游戏名字</div>
-                                <span style="background-color: #008000">7.9<span>折</span></span>
-                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
-                                <span class="fontTitle">￥79</span>
-                            </div>
+                            <a th:href="'/games/'+${s.gid}">
+                                <div style="padding: 10px;background-color: rgba(8,19,29,0.39)">
+                                    <img th:src="'/upload/gameImg/'+${s.cover}" alt="" height="80px" width="100%">
+                                    <div th:text="${s.name}"></div>
+                                    <span style="background-color: #008000" th:text="${s.discount}"></span>
+                                    <span style="text-decoration: line-through;color: #a4a4a4"
+                                          th:text="${s.discount}==''?'':${s.cost}"></span>
+                                    <span class="fontTitle" th:text="${s.price}"></span>
+                                </div>
+                            </a>
                         </div>
-                        <div class="col-lg-4"
-                             style="margin-top: 40px;padding: 1px">
-                            <div style="padding: 10px;background-color: rgba(8,19,29,0.39)">
-                                <img src="/images/banner2.jpg" alt="" height="80px" width="100%">
-                                <div>游戏名字</div>
-                                <span style="background-color: #008000">7.9<span>折</span></span>
-                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
-                                <span class="fontTitle">￥79</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-4"
-                             style="margin-top: 40px;padding: 1px">
-                            <div style="padding: 10px;background-color: rgba(8,19,29,0.39)">
-                                <img src="/images/banner2.jpg" alt="" height="80px" width="100%">
-                                <div>游戏名字</div>
-                                <span style="background-color: #008000">7.9<span>折</span></span>
-                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
-                                <span class="fontTitle">￥79</span>
-                            </div>
-                        </div>
+
 
                     </div>
                     <!--右-->
@@ -253,55 +342,11 @@
                         <!--支持的语言-->
                         <div class="col-lg-12" style=";padding:10px;background-color: #02030557">
                             <div class="fontTitle">语言</div>
-                            <div style="">
-                                <div style="float: left;width: 40%;color: #a7a7a7">&nbsp;</div>
-                                <div style="float: left;width: 20%;color: #a7a7a7">界面</div>
-                                <div style="float: left;width: 20%;color: #a7a7a7">音频</div>
-                                <div style="float: left;width: 20%;color: #a7a7a7">字幕</div>
-
+                            <!--加入th-->
+                            <div style="font-size: 11px">
+                                <table th:utext="${game.info.language}"></table>
                             </div>
 
-                            <div>
-                                <hr style="margin-bottom:3px">
-                                <div style="float: left;width: 40%;color: #a7a7a7">简体中文</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-
-                            </div>
-                            <div>
-                                <hr style="margin-bottom:3px">
-                                <div style="float: left;width: 40%;color: #a7a7a7">英语</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">&nbsp;</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-
-                            </div>
-                            <div>
-                                <hr style="margin-bottom:3px">
-                                <div style="float: left;width: 40%;color: #a7a7a7">法语</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-
-                            </div>
-                            <dvi>
-                                <hr style="margin-bottom:3px">
-                                <div style="float: left;width: 40%;color: #a7a7a7">意大利语</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-
-
-                            </dvi>
-                            <div>
-                                <hr style="margin-bottom:3px">
-                                <div style="float: left;width: 40%;color: #a7a7a7">德语</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-                                <div style="float: left;width: 20%;color: #2E6DA4;font-weight: bold">✔</div>
-
-                            </div>
                         </div>
                         <!--游戏评分-->
                         <div class="col-lg-12" style=";margin-top: 10px;padding:10px;background-color: #02030557">
@@ -335,7 +380,7 @@
     <!--模块三：消费者评价-->
     <div class="container" style="width: 60%;">
         <div class=" row">
-            <div class="col-lg-12" style="margin-top: 10px;height: 300px;">
+            <div class="col-lg-12" style="margin-top: 10px;">
                 <!--评论导航条-->
                 <div class="col-lg-12 "
                      style="height: 60px;padding: 10px;background-color: rgba(0,22,37,0.25);box-shadow: 0px 0px 2px 2px #c2860a">
@@ -463,15 +508,88 @@
 
 </div>
 </body>
-<script>
-    $(".assess").mouseover(function () {
+<script src="/js/alert.js"></script>
 
-        $(this).css("background-color", "rgba(70,121,170,0.64)");
-    })
-    $(".assess").mouseout(function () {
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $("#hl1").text("游戏详情");
+        $('#searchAll').bind('keyup', function (event) {
+            if (event.keyCode == "13") {
 
-        $(this).css("background-color", "rgba(228,243,242,0.11)");
-    })
+                location.href = "/search/" + $("#searchAll").val();
+
+            }
+        });
+        $('#divBg').css('background', "url(/upload/gameImg/" + $("#bgValue").text() + " ) no-repeat center top");
+
+        $(".assess").mouseover(function () {
+
+            $(this).css("background-color", "rgba(70,121,170,0.64)");
+        })
+        $(".assess").mouseout(function () {
+
+            $(this).css("background-color", "rgba(228,243,242,0.11)");
+        })
+        $("#headerNav").css("box-shadow", "0 20px 20px rgba(0, 112, 255, 0.51)");
+        $('#hl1').removeClass('active');
+
+
+        $("#videoDiv").mouseover(function () {
+            $("#poster").fadeOut(300);
+            $("#gameVideo").trigger('play');//播放视频
+
+        });
+        $("#videoDiv").mouseout(function () {
+
+            $("#poster").fadeIn(300);
+            $("#gameVideo").trigger('pause');
+
+        })
+
+    });
+
+    function changeShowImg(id) {
+        $('#videoDiv').hide();
+        $('#imageDiv').fadeIn(250);
+        $('.showImg').hide();
+        $('#showImg' + id).fadeIn(250);
+    }
+
+    function changeShowVideo() {
+
+        $('#imageDiv').hide();
+        $('#videoDiv').fadeIn(250);
+
+    }
+
+
+    function addCart() {
+        $.ajax({
+            url: "/cart/add",
+            method: "post",
+            data: {
+                cid: $("#cid").text(),
+                company: $("#companyName").text(),
+                gid: [[${game.info.gid}]],
+                game: [[${game.info.name}]],
+                cost: [[${game.info.cost}]],
+                price: [[${game.info.price}]],
+                cover: [[${game.info.cover}]],
+            },
+            success: function (response) {
+                testInner(3, response.msg)
+                setTimeout(function () {
+                    window.location.reload();
+                }, 5000);
+
+            },
+            error: function () {
+                testInner(3, '添加失败')
+
+            }
+        });
+
+    }
 
 
 </script>

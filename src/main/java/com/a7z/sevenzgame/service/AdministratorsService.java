@@ -1,6 +1,8 @@
 package com.a7z.sevenzgame.service;
 
-import com.a7z.sevenzgame.entity.po.Administrators;
+import com.a7z.sevenzgame.entity.po.Administrator;
+
+import java.util.List;
 
 /**
  * @author lq
@@ -8,13 +10,15 @@ import com.a7z.sevenzgame.entity.po.Administrators;
  */
 public interface AdministratorsService {
 
-    void addOne(Administrators administrators);
+    void addOne(Administrator administrator);
 
-    Administrators findOne(String username, String password);
+    Administrator findOne(String username, String password);
 
     String queryId(String id);
 
     String queryPasswordById(String id);
+
+    List<String> queryPermById(String id);
 
 
 }

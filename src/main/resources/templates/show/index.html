@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>7zGame</title>
     <meta name="description" content="">
-
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
 
     <!-- core CSS -->
 
@@ -46,7 +46,7 @@
             --bg: #1b1f2f;
             transition: background .8s ease;
             background: var(--bg);
-            background-image: url("/images/test2.jpg");
+            background-image: url("/upload/background.jpg");
             background-size: 100% 620px;
             background-repeat: no-repeat;
 
@@ -65,6 +65,32 @@
             transform: translate(-50%, 0);
         }
 
+        #m-n-game {
+            height: 100px;
+            background: linear-gradient(90deg, rgba(76, 149, 153, 0.51) 0%, rgba(35, 53, 93, 0) 60%, rgba(76, 149, 153, 0.51) 100%);
+            text-align: center;
+            padding: 5px;
+
+            transition: all 0.6s;
+
+        }
+
+        #m-n-game:hover {
+            transform: scale(1.05);
+
+        }
+
+        /*侧边滑动条*/
+        ::-webkit-scrollbar {
+            width: 6px;
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(94, 2, 167, 0.84);
+            border-radius: 3px;
+
+        }
     </style>
     <!--轮播图1css-->
     <style>
@@ -218,6 +244,32 @@
 
         }
 
+        .gameList {
+            transition: all 0.1s;
+        }
+
+        .gameList:hover {
+            transform: scale(1.05);
+        }
+
+
+        .week {
+            transition: all 0.1s;
+        }
+
+        .week:hover {
+            transform: scale(1.05);
+        }
+
+        .compilation {
+            transition: all 0.1s;
+        }
+
+        .compilation:hover {
+            transform: scale(1.1);
+        }
+
+
         .slidTag {
             background-image: url("fonts/circle.svg");
             background-repeat: no-repeat;
@@ -243,6 +295,48 @@
             margin: auto
 
 
+        }
+
+        .ch-default {
+            background-color: rgba(159, 159, 159, 0.57);
+            height: 10px;
+            width: 15px;
+            border-radius: 3px;
+            text-align: center;
+            display: inline-block
+        }
+
+        .ch-choose {
+            background-color: #bdbec4;
+            height: 10px;
+            width: 15px;
+            border-radius: 3px;
+            text-align: center;
+            display: inline-block
+        }
+
+        figure.card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: var(--image-src);
+            background-position: center center;
+            background-size: 250%;
+            transition: background 400ms ease;
+            box-shadow: 0 6.7px 5.3px rgba(0, 0, 0, 0.03), 0 22.3px 17.9px rgba(0, 0, 0, 0.05), 0 100px 80px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            filter: grayscale(90%);
+
+            transition: background-position .5s;
+
+
+        }
+
+        figure.card:hover {
+            /*transition: filter 0.5s;*/
+            filter: grayscale(0%);
+
+            background-position: 50% 100%;
         }
 
 
@@ -295,32 +389,19 @@
 <!--旋转轮播-->
 <div class="scene" style="margin-bottom: 5px">
     <div class="carousel">
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-        <div class="carousel__cell"><img src="/images/header.jpg" width="100% " height="100%"/></div>
-
+        <div th:each="entity,stat:${gameNav}" class="carousel__cell">
+            <img th:src="'/upload/gameImg/'+${entity.cover}" width="100% " height="100%"/>
+        </div>
     </div>
 </div>
 <div style="text-align: center; margin: 1px 0px 0px;padding: 0">
     <h3 style="margin-top: 1px ;padding:0 ">🔺</h3>
-    <h3 style="font-weight: bold;margin: 0">游戏名字</h3>
-    <p>游戏介绍babababababababababababababab</p>
+    <a th:each="nav,stat:${gameNav}" hidden th:id="'nav-gName-'+${stat.count}" class="nav-game"
+       th:href="'/games/'+${nav.gid}">
+        <h3 style="font-weight: bold;margin: 0" th:text="${nav.name}"></h3>
+    </a>
+
 </div>
-
-
-<!--旋转轮播图按钮-->
 <div class="carousel-options" hidden>
     <p>
         <label>
@@ -349,108 +430,130 @@
 <main>
     <div class="container">
         <div class="row" style="margin: 0">
-            <!--            <div class="col-lg-12">-->
-            <!--                <img style="margin: 0px 0px 5px ;width: 200px;height: 55px" src="images/tag.jpg" alt="">-->
-
-            <!--            </div>-->
             <!--1分类标签-->
             <div th:replace="show/common::sort"></div>
             <!--2推荐-->
-            <div class="col-lg-2   inner t"
-                 style="margin: 0;background:linear-gradient(#41158d, rgba(135,141,139,0));height: 350px">
-                <div style="margin:0; padding-top: 5px;width:100%;height: 30%">
-                    <div style="width:100%;height: 20%">画质: <span>⭐⭐⭐⭐⭐⭐</span></div>
-                    <div style="width:100%;height: 20%">剧情: <span>⭐⭐</span></div>
-                    <div style="width:100%;height: 20%">手感: <span>⭐</span></div>
-                    <div style="width:100%;height: 20%">音乐: <span>⭐⭐⭐⭐</span></div>
-                    <hr style="height: 8%;width: 70px;order-top: 4px solid #f39c12;">
-                </div>
-                <div style="margin:0; padding-top: 5px;width:100%;height: 60%">
-                    <div style="text-align: center;font-size: 25px;font-style: italic">9.8</div>
-                    <div style="font-size: 16px">游戏简介：</div>
-                    <div style="width: 100%;word-wrap:break-word">
-                        <span style="font-size: 16px;width: 100%">
-                               &nbsp;&nbsp;babababababababababababababababababababababababababababababa
-
-                        </span>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-10   t" style="height: 360px">
-                <div class="row" style="margin: 0">
-                    <div class="col-lg-8 ">
-                        <div id="box">
-                            <div class="pic"><img src="/images/banner1.jpg" width="100%" height="350px"/></div>
-                            <div class="pic"><img src="/images/banner2.jpg" width="100%" height="350px"/></div>
-                            <div class="pic"><img src="/images/banner1.jpg" width="100%" height="350px"/></div>
-                            <div class="pic"><img src="/images/banner3.jpg" width="100%" height="350px"/></div>
+            <div style="position: relative;height: 380px;margin-top: 120px;">
+                <div th:each="r,stat:${gameRecommend}" hidden th:id="'ch-'+${stat.count}+'-show'" class="ch-show"
+                     style="position: absolute">
+                    <div class="col-lg-2"
+                         style="margin: 0;background:linear-gradient(#41158d, rgba(135,141,139,0));height: 350px;width: 195px">
+                        <div style="margin:0; padding-top: 5px;width:100%;height: 30%">
+                            <div style="width:100%;height: 20%">画质: <span>⭐⭐⭐⭐⭐⭐</span></div>
+                            <div style="width:100%;height: 20%">剧情: <span>⭐⭐</span></div>
+                            <div style="width:100%;height: 20%">手感: <span>⭐</span></div>
+                            <div style="width:100%;height: 20%">音乐: <span>⭐⭐⭐⭐</span></div>
+                            <hr style="height: 8%">
                         </div>
-                    </div>
-                    <div class="col-lg-4" style="margin: 0;padding: 0">
-                        <!--                        <img src="images/about.jpg" alt="" style="margin: 0;padding: 0;width: 100%;height: 350px">-->
-                        <div style="margin: 0;padding: 0;width: 100%;height: 350px;background-color: #222222">
-                            <p style="margin: 0;padding: 9px 10px 0px;width: 100%;height: 12%;font-size: 20px">游戏名字</p>
-                            <div style="margin: 0;width: 100%;height: 60%">
-
-                                <div style="padding:6px 0px 0px 6px;width: 50%;height:50%;float: left">
-                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
-                                </div>
-                                <div style="padding:6px 6px 0px ;width: 50%;height:50%;float: right">
-                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
-                                </div>
-
-                                <div style="padding:6px 0px 6px 6px ;width: 50%;height:50%;float: left">
-                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
-                                </div>
-                                <div style="padding:6px;width: 50%;height:50%;float: right">
-                                    <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black"></div>
-                                </div>
-
+                        <div style="margin:0; padding-top: 5px;width:100%;height: 60%">
+                            <div style="text-align: center;font-size: 25px;font-style: italic">9.8</div>
+                            <div style="font-size: 16px">游戏简介：</div>
+                            <div th:text="${r.describes}"
+                                 style="width: 100%;word-wrap:break-word;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 5;overflow: hidden;">
                             </div>
-                            <p style="margin: 0;padding: 7px 10px 1px;width: 100%;height: 20%;font-size: 18px">厂商名</p>
-                            <p style="margin: -5px 0px 0px;padding: 7px 10px 0px;width: 100%;height: 8%;font-size: 15px">
-                                <span style="background-color: #008000">7.9<span>折</span></span>
-                                <span style="text-decoration: line-through;color: #a4a4a4">100￥</span>
-                                79<span>￥</span>
-                                <a href="#"> <img src="/fonts/download.svg"
-                                                  style="float:right;width: 20px;height: 20px;"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10" style="height: 360px;width: 975px">
+                        <div class="row" style="margin: 0">
+                            <a th:href="'/games/'+${r.gid}">
+                                <div class="col-lg-8 " style="height: 350px">
+                                    <img th:src="'/upload/gameImg/'+${r.cover}" width="100%" height="100%" alt=""/>
+                                </div>
+                            </a>
+                            <div class="col-lg-4" style="margin: 0;padding: 0">
+                                <div style="margin: 0;padding: 0;width: 100%;height: 350px;background-color: #222222">
+                                    <a th:href="'/games/'+${r.gid}">
+                                        <p th:text="${r.name}"
+                                           style="margin: 0;padding: 9px 10px 0px;width: 100%;height: 12%;font-size: 20px">
+                                        </p>
+                                    </a>
+                                    <div style="margin: 0;width: 100%;height: 60%">
 
+                                        <div style="padding:6px 0px 0px 6px;width: 50%;height:50%;float: left">
+                                            <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black">
+                                                <img th:src="'/upload/gameImg/'+${r.imgArr.get(0)}" alt="" width="100%"
+                                                     height="100%">
+                                            </div>
+                                        </div>
+                                        <div style="padding:6px 6px 0px ;width: 50%;height:50%;float: right">
+                                            <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black">
+                                                <img th:src="'/upload/gameImg/'+${r.imgArr.get(1)}" alt="" width="100%"
+                                                     height="100%">
+                                            </div>
+                                        </div>
 
-                            </p>
+                                        <div style="padding:6px 0px 6px 6px ;width: 50%;height:50%;float: left">
+                                            <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black">
+                                                <img th:src="'/upload/gameImg/'+${r.imgArr.get(2)}" alt="" width="100%"
+                                                     height="100%">
+                                            </div>
+                                        </div>
+                                        <div style="padding:6px;width: 50%;height:50%;float: right">
+                                            <div style="width: 100%;height:100%;border:1px solid black;box-shadow: 0px 0px 1px black">
+                                                <img th:src="'/upload/gameImg/'+${r.imgArr.get(3)}" alt="" width="100%"
+                                                     height="100%">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <a href="">
+                                        <p th:text="${r.company}"
+                                           style="margin: 0;padding: 7px 10px 1px;width: 100%;height: 20%;font-size: 18px">
+                                        </p>
+                                    </a>
+                                    <p style="margin: -5px 0px 0px;padding: 7px 10px 0px;width: 100%;height: 8%;font-size: 15px">
+                                        <span th:text="${r.discount}"
+                                              style="background-color: #008000"></span>
+                                        <span th:text="${r.discount}==''?'':${r.cost}"
+                                              style="text-decoration: line-through;color: #a4a4a4"></span>
+                                        <span th:text="${r.price}"></span>
+                                        <a th:href="'/games/'+${r.gid}"><img src="fonts/shop.svg"
+                                                                             style="float:right;width: 20px;height: 20px;"></a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12" style="height: 30px;text-align: center">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circleChoose.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
+                <div class="col-lg-12" style="bottom:0;height: 20px;text-align: center;position:absolute;">
+                    <div id="ch-1" class="ch-choose ch"></div>
+                    <div id="ch-2" class="ch-default ch"></div>
+                    <div id="ch-3" class="ch-default ch"></div>
+                    <div id="ch-4" class="ch-default ch"></div>
+                    <div id="ch-5" class="ch-default ch"></div>
+                    <div id="ch-6" class="ch-default ch"></div>
+                    <div id="ch-7" class="ch-default ch"></div>
+                    <div id="ch-8" class="ch-default ch"></div>
+                    <div id="ch-9" class="ch-default ch"></div>
+                    <div id="ch-10" class="ch-default ch"></div>
+                </div>
             </div>
             <!--3折扣优惠-->
             <div class="col-lg-1" style="margin:10px 0px 0px;"></div>
             <div class="col-lg-11" style="margin:60px 0px 0px;font-size: 17px">折扣优惠</div>
-
-
             <div class="col-lg-1" style="margin:0;height: 360px;">
                 <div style="height: 100%"><img class="arrow" src="/images/arrow.png" width="60px" height="110px" alt=""
                                                style="transform: rotateY(180deg);right: 0"></div>
             </div>
             <div class="col-lg-10" style="margin:0;height: 360px;">
-                <div class="col-lg-4" style="padding:5px;margin:0;height: 360px">
-                    <div style="border: 2px solid black;height: 100%;box-shadow: 0px 0px 3px black"></div>
-                </div>
-                <div class="col-lg-4" style="padding:5px;margin:0;height: 360px">
-                    <div style="border: 2px solid black;height: 100%;box-shadow: 0px 0px 3px black"></div>
-                </div>
-                <div class="col-lg-4" style="padding:5px;margin:0;height: 360px">
-                    <div style="border: 2px solid black;height: 100%;box-shadow: 0px 0px 3px black"></div>
+                <div th:each="d,stat:${gameDiscount}" class="col-lg-4" style="padding:5px;margin:0;height: 360px">
+                    <div style="border: 2px solid black;height: 100%;box-shadow: 0px 0px 3px black">
+                        <a th:href="'/games/'+${d.gid}">
+                            <figure class="card card--1"
+                                    th:style="'--image-src: url(/upload/gameImg/'+${d.cover}+');box-shadow: 0px 0px 10px 1px black;background-size: 80%'">
+                                <figcaption>
+                                        <span class="info">
+                                            <h3 th:text="${d.name}"></h3>
+                                            <span th:text="${d.discount}"
+                                                  style="background-color: #008000;font-size: 14px"></span>
+                                            <span th:text="${d.cost}"
+                                                  style="text-decoration: line-through;color: #a4a4a4;font-size: 14px"></span>
+                                            <span th:text="${d.price}" style="font-size: 14px"></span>
+                                        </span>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-1" style="margin:0;height: 360px;">
@@ -458,18 +561,7 @@
                                                style="left:0"></div>
 
             </div>
-            <!--折扣优惠底标-->
-            <div class="col-lg-12" style="height: 30px;text-align: center">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circleChoose.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-                <img src="/fonts/circle.svg" alt="">
-            </div>
+
 
         </div>
     </div>
@@ -482,11 +574,13 @@
                     <div class="col-lg-12" style="background-color: black;height: 350px">
                         <div id="videoDiv" class="col-lg-8 "
                              style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 8px black">
-                            <img id="poster" src="/images/10001.jpg" alt=""
-                                 style="position: absolute;width: 100%;height: 100%">
-                            <video id="gameVideo"
-                                   src="https://media.st.dl.eccdnx.com/steam/apps/256769041/movie480.webm?t=1575597525"
-                                   width="100%" height="100%"></video>
+                            <a th:href="'/games/'+${gameUserRecommend.gid}">
+                                <img id="poster" th:src="'/upload/gameImg/'+${gameUserRecommend.cover}" alt=""
+                                     style="position: absolute;width: 100%;height: 100%">
+                                <video id="gameVideo"
+                                       th:src="${gameUserRecommend.videourl}"
+                                       width="100%" height="100%"></video>
+                            </a>
                         </div>
                         <div class="col-lg-4"
                              style="padding:13px;height:100%;background:linear-gradient(rgba(102,78,210,0.66),rgba(77,50,208,0.38));word-wrap:break-word ">
@@ -526,6 +620,8 @@
             </div>
         </div>
     </div>
+
+
     <!--5合集专区-->
     <div style="margin: 0;height: 550px;width: 100%;">
         <div class="container">
@@ -537,28 +633,16 @@
                     <hr style="margin:0px 0px 20px;padding:0;width: 100%;border: 2px solid rgba(130,5,255,0.73)"/>
                 </div>
                 <div class="col-lg-12" style="height: 400px;text-align: center">
-                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
-                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
-                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
+                    <div th:each="cp,stat:${compilation}" class="compilation"
+                         style="float: left;width: 20%;height: 100%;padding: 5px">
+                        <a th:href="'/compilations/'+${cp.cid}">
+                            <div th:style="'height: 90%;width: 100%;box-shadow:0px 0px 8px black;background: url(/upload/compilationImg/'+${cp.img}+');background-position: center center;background-size: 275%;'">
+                            </div>
+                        </a>
+                        <a th:href="'/compilations/'+${cp.cid}">
+                            <div th:text="${cp.name}" style="height: 10%;padding-top:8px;font-size: 16px"></div>
+                        </a>
                     </div>
-                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
-                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
-                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
-                    </div>
-                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
-                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
-                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
-                    </div>
-                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
-                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
-                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
-                    </div>
-                    <div style="float: left;width: 20%;height: 100%;padding: 5px">
-                        <div style="height: 90%;box-shadow:  0px 0px 8px black"></div>
-                        <div style="height: 10%;padding-top:8px;font-size: 16px">游戏名字</div>
-                    </div>
-
-
                 </div>
                 <div class="col-lg-12" style="margin:0;padding:0;width: 100%">
                     <hr style="margin:0px 0px 20px;padding:0;width: 100%;border: 2px solid rgba(130,5,255,0.73)"/>
@@ -567,267 +651,20 @@
         </div>
     </div>
 
-    <!--6游戏列表-->
+    <div th:replace="show/common::monthHot"></div>
 
-    <div style="margin-top:60px;width: 100%;height: 800px;background:linear-gradient(rgba(35,53,93,0.51) 0%, rgba(35,53,93,0) 60%)">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10" style="margin:3px 0px 0px;padding:10px; font-size: 17px">
-                    <div class="col-lg-12" style="margin-top: -36px;padding-bottom: 0;font-size: 15px">
-                        <button style="background-color: rgba(255,0,0,0);padding-bottom: 0;border: none">热销商品</button>
-                        <button style="background-color: rgba(35,53,93,0.51);padding-bottom: 0;border: none;border-radius: 6px 6px 0px 0px ">
-                            新品
-                        </button>
-                        <button style="background-color: rgba(255,0,0,0);padding-bottom: 0;border: none">优惠</button>
-                    </div>
-                    <div class="col-lg-12" style="height: 800px">
-                        <div class="col-lg-8 ">
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
+    <!--7游戏列表-->
+    <div th:replace="show/common::gameList"></div>
 
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div style="width: 97%;margin-bottom:11px;height: 70px;background-color: rgba(184,176,177,0.05)">
-                                <div style="float:left;width: 185px;height: 100%;background-color: #000000"></div>
-                                <div style="float:left;padding:3px;width: 250px;height:100%;font-size: 15px">
-                                    <div style="float: top;height: 70%">give me your heart</div>
-                                    <div style="float: top;height: 30%;color:  #a4a4a4">分类1 分类2</div>
-                                </div>
-                                <div style="float:right;width: 190px;height:100%;">
-                                    <div style="margin-top: 25px;float:left;width:45px;background-color: #008000;">
-                                        8.9<span>折</span>
-                                    </div>
-                                    <div style="margin-top:9px;padding: 5px;height: 100%;float: right">
-                                        <div style="font-size: 13px;text-decoration: line-through;color: #a4a4a4">100￥
-                                        </div>
-                                        <div>89￥</div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="col-lg-4"
-                             style="padding:13px;height:100%;background:linear-gradient(rgba(102,78,210,0.66),rgba(77,50,208,0.38));word-wrap:break-word ">
-                            <div style="font-size: 20px">游戏名字</div>
-                            <div style="margin-top: 10px;padding: 4px;background-color: rgba(97,99,98,0.41);height: 50px;font-size: 13px">
-                                <div>评分:8.5</div>
-                                <div>全体好评数:223</div>
-                            </div>
-
-                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
-                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
-                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
-                            <div style="margin-top:10px;height: 165px;border: 1px solid black;box-shadow: 0px 0px 1px black;"></div>
-
-
-                        </div>
-                    </div>
-                    <!--本周畅销榜-->
-                    <div class="col-lg-12" style="margin-top: 100px;">
-                        本周畅销榜
-                    </div>
-                    <div class="col-lg-12" style="padding-right: 30px;height: 420px">
-                        <div class="col-lg-5"
-                             style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 5px black"></div>
-                        <div class="col-lg-7" style="height: 100%;">
-                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
-                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
-                            </div>
-                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
-                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
-                            </div>
-                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
-                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
-                            </div>
-                            <div class="col-lg-12" style="padding-left: 20px;height: 4%;"></div>
-                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
-                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
-                            </div>
-                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
-                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
-                            </div>
-                            <div class="col-lg-4" style="padding-left: 20px;height: 48%;">
-                                <div style="height: 100%;border: 1px solid black;box-shadow: 0px 0px 2px black"></div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
+    <!--8本周畅销-->
+    <div th:replace="show/common::weekHot"></div>
 </main>
 
 <!--页脚信息-->
 <footer th:replace="show/common::footer"></footer>
-<!--页脚信息-->
-</body>
 
+</body>
+<script src="/js/alert.js"></script>
 <script>
     $('.switch input').on('change', function (e) {
         $('.dropdown, body').toggleClass('light', $(this).is(':checked'));
@@ -838,9 +675,16 @@
 
 
     $(document).ready(function () {
+        $("#nav-gName-1").show();
+        let i = 2;
         setInterval(function () {
             selectedIndex++;
             rotateCarousel();
+            $(".nav-game").hide();
+            $("#nav-gName-" + i).fadeIn(500);
+            i++;
+            if (i > 15)
+                i = 1;
         }, 4000)
     });
     var carousel = document.querySelector('.carousel');
@@ -922,26 +766,65 @@
 </script>
 <!--轮播2-->
 <script>
-    $(window).ready(function () {
-        $("#box .pic").eq(0).show();
-        var i = 0;
+    $(document).ready(function () {
 
-        function fad() {
-            var m = i % 4;
-            var n = (i + 1) % 4;
-            $("#box .pic").eq(m).fadeOut(800);
-            $("#box .pic").eq(n).fadeIn(800);
-            i++;
 
-        };
-        int = setInterval(fad, 5000);
-    });
+        $("#ch-1-show").show();
+        let i = 1;
+        setInterval(function () {
+            let next = i + 1;
+            $(".ch").attr("class", "ch-default ch");
+            $("#ch-" + next).attr("class", "ch-choose ch");
+            $(".ch-show").fadeOut(500);
+            $("#ch-" + next + "-show").fadeIn(600);
+
+            i = next;
+            if (next >= 10)
+                i = 0;
+        }, 4000);
+
+        $(".ch").click(function () {
+            let id = $(this).attr("id");
+            let split = id.split("-");
+
+
+            $(".ch").attr("class", "ch-default ch");
+            $(this).attr("class", "ch-choose ch");
+            $(".ch-show").hide();
+            $("#ch-" + split[1] + "-show").show();
+            i = Number(split[1]);
+            if (i >= 10)
+                i = 0;
+        });
+    })
 </script>
+<!--其他-->
+<script>
+    let date = new Date();
+    let str = date.getFullYear() + '年' + (date.getMonth() + 1) + '月';
+    $("#time").text(str);
+    $('#info-game1').fadeIn(500);
+    $(".gameList").mouseenter(function () {
+        let id = $(this).attr("id");
+        $(".info-game").fadeOut(100);
+        $("#info-" + id).fadeIn(500);
 
+    })
+</script>
 
 <!--视频播放-->
 <script>
     $(document).ready(function () {
+
+
+        $('#searchAll').bind('keyup', function (event) {
+            if (event.keyCode == "13") {
+
+                location.href = "/search/" + $("#searchAll").val();
+
+            }
+        });
+
         $("#videoDiv").mouseover(function () {
             $("#poster").fadeOut(300);
             $("#gameVideo").trigger('play');//播放视频

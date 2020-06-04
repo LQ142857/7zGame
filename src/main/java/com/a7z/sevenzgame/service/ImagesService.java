@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
  * @create 2020/3/14-15:54
  */
 
-public interface ImageService {
-    public void addImage(String gid, String name);
+public interface ImagesService {
+    public void addImage(int gid, int distinguish, String name);
+
     public void changeStateTo0(String name);
 
 

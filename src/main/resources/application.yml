@@ -1,5 +1,5 @@
 #查看springboot开启了哪些配置
-debug: true
+#debug: true
 
 
 spring: 

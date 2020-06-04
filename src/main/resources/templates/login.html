@@ -2,12 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>shiro登录注册测试</title>
+    <title>7zGame-登录</title>
 
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+    <link href="/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/searchtype.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
     <style>
         /* base.scss */
         html {
             box-sizing: border-box;
+        }
+
+        body {
+            background: none;
         }
 
         * {
@@ -69,14 +80,6 @@
             appearance: none;
         }
 
-        img {
-            display: block;
-            height: auto;
-            max-height: 100%;
-            -o-object-fit: cover;
-            object-fit: cover;
-            width: 100%;
-        }
 
         svg {
             display: block;
@@ -143,8 +146,8 @@
 
         html {
             height: 100%;
-            background: linear-gradient(rgba(30, 201, 255, 0.71), rgba(82, 86, 255, 0.76));
-            background-repeat: no-repeat;
+            background-image: url('/upload/login.jpg');
+
 
         }
 
@@ -204,7 +207,8 @@
         }
 
         input {
-            background-color: #fff;
+            color: white;
+            background-color: #ffffff5c;
             margin: .5rem 0;
             text-transform: capitalize;
             text-align: center;
@@ -236,7 +240,7 @@
         }
 
         button {
-            background: #16a085;
+            background: #16a0858f;
             color: #fff;
             cursor: pointer;
             font-weight: 500;
@@ -251,44 +255,66 @@
         }
 
         button.--usr-rtn::before {
-            content: 'Sign in';
+            content: '登录';
         }
 
         button.--usr-new::before {
-            content: "Sign up";
+            content: "注册";
         }
 
         button.--usr-rst::before {
-            content: "reset password";
+            content: "忘记密码";
+        }
+
+        input::-webkit-input-placeholder {
+
+            color: #e4e1df;
+
+
+        . . . . . .
+
         }
 
     </style>
 
 </head>
 <body>
-<h1 style="font-size:20px;text-align: center;margin-top: 10%">7zGame---管理模板登录测试</h1>
+<!--头部信息-->
+<header th:replace="show/common::header"></header>
+<h1 style="color: #c0bebe;;font-size:20px;text-align: center;margin-top: 10%">7zGame---登录</h1>
 
 
-<h1 id="msg" style="font-size:15px;text-align: center;color: rgba(169,0,12,0.92)"></h1>
+<h1 id="msg" style="font-size:15px;text-align: center;color: rgba(169,0,12,0.92)">您还未登录，请您登录账户~~</h1>
 
 <div class="wrap flex-c-c">
 
     <ul class="select__list">
-        <li id="js-usr-rtn" class="select__label">登录</li>
-        <li id="js-usr-new" class="select__label select__label--active">注册用户</li>
+        <li id="js-usr-rtn" class="select__label select__label--active">登录</li>
+        <li id="js-usr-new" class="select__label">注册用户</li>
         <li id="js-usr-rst" class="select__label">忘记密码</li>
     </ul>
-    <span class="pointer"></span>
+    <span class="pointer --usr-rtn"></span>
     <input type="text" placeholder="账户" class="ui-field" id="js-field__email"/>
-    <input type="text" placeholder="名字" class="ui-field" id="js-field__r-pass"/>
+    <input type="text" placeholder="名字" class="ui-field ui-field--hidden" id="js-field__r-pass"/>
     <input type="password" placeholder="密码" class="ui-field" id="js-field__pass"/>
-    <button id="js-btn" class="ui-button --usr-new"></button>
+    <button id="js-btn" class="ui-button --usr-rtn"></button>
 
 </div>
 </body>
+<script src="/js/alert.js"></script>
 <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
 <script>
-    //to-do. dry-up & remove jq
+    $(document).ready(function () {
+        $("#hl1").text("登录");
+        $('#searchAll').bind('keyup', function (event) {
+            if (event.keyCode == "13") {
+
+                location.href = "/search/" + $("#searchAll").val();
+
+            }
+        });
+    })
+
     $('.select__label').click(function () {
         $('.select__label').removeClass('select__label--active');
         $(this).addClass('select__label--active');
@@ -310,51 +336,56 @@
     });
 
     $("#js-btn").click(function () {
+        let regex = /^[a-zA-Z0-9]{6,15}$/;
+        let account = $("#js-field__email").val();
+        let password = $("#js-field__pass").val();
+
+        if (!regex.test(account)) {
+            $("#msg").css("color", "rgba(180,117,0,0.92)");
+            $("#msg").text("账户格式不正确：请输入6-15个英文数字组合");
+            return;
+        }
         if ($(this).hasClass("--usr-rtn")) {
             $.ajax({
-                url: "/admin",
+                url: "/account",
                 method: "GET",
                 data: ({
-                    id: $("#js-field__email").val(),
-                    password: $("#js-field__pass").val()
+                    account: account,
+                    password: password,
+
                 }),
                 success: function (data) {
                     if (data.code === 200) {
-                        location.href = "https://www.baidu.com/"
+                        location.href = "http://www.7z.work/index"
                     } else {
+                        $("#msg").css("color", "rgba(169,0,12,0.92)");
                         $("#msg").text(data.msg)
-
                     }
+                },
 
-                }
 
             });
-
-
         }
         if ($(this).hasClass("--usr-new")) {
             $.ajax({
-                url: "/admin",
+                url: "/account",
                 method: "POST",
                 data: ({
-                    id: $("#js-field__email").val(),
+                    account: account,
                     name: $("#js-field__r-pass").val(),
-                    password: $("#js-field__pass").val()
+                    password: password
                 }),
                 success: function (data) {
                     if (data.code === 200) {
+                        $("#msg").css("color", "rgba(36, 180, 0, 0.92)");
                         $("#msg").text(data.msg)
                     } else {
+                        $("#msg").css("color", "rgba(169,0,12,0.92)");
                         $("#msg").text(data.msg)
                     }
-
                 }
-
             });
-
-
         }
-
     });
 
 </script>

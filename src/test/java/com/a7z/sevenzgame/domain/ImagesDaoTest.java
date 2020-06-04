@@ -11,18 +11,18 @@ import java.util.List;
  * @create 2020/3/14-15:18
  */
 @SpringBootTest
-class ImageDaoTest {
+class ImagesDaoTest {
     @Autowired
-    ImageDao imageDao;
+    ImagesDao imagesDao;
 
     @Test
     void imageTest(){
 //        imageDao.addOne("10003","test");
 //        imageDao.changeState("test");
-        List<String> strings = imageDao.queryImagesByGidWithState1("10000");
-        for (String string : strings) {
-            System.out.println(string);
-        }
+//        List<String> strings = imagesDao.queryEffectByGid(10000,1);
+//        for (String string : strings) {
+//            System.out.println(string);
+//        }
 
 
     }

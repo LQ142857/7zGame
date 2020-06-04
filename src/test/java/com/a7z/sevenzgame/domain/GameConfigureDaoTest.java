@@ -16,17 +16,7 @@ public class GameConfigureDaoTest {
 
     @Test
     void addOneTest() {
-        GameConfigure gameConfigure = new GameConfigure();
-        gameConfigure.setGid("gid");
-        gameConfigure.setSystem("system");
-        gameConfigure.setCpu("cpu");
-        gameConfigure.setGpu("gpu");
-        gameConfigure.setRam("ram");
-        gameConfigure.setRom("rom");
-        gameConfigure.setDirectx("11");
-        gameConfigure.setNet(1);
 
-        gameConfigureDao.addOne(gameConfigure);
 
     }
 

@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class UploadFilePathConfiguration implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/upload/**").addResourceLocations("file:/"+ UploadUtil.getUploadFilePath()+"/upload/");
+//        registry.addResourceHandler("/upload/**").addResourceLocations("file:/"+ UploadUtil.getUploadFilePath()+"/upload/");
 
     }
 

@@ -18,7 +18,7 @@ public class UploadUtil {
      */
     public static String getUploadFilePath() {
         String path = UploadUtil.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        path = path.substring(1, path.length());
+        path = path.substring(1);
         try {
             path = URLDecoder.decode(path, "utf-8");
         } catch (UnsupportedEncodingException e) {
